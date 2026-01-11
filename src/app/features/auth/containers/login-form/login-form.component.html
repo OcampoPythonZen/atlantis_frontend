@@ -1,0 +1,82 @@
+<div class="animate-fade-in-up">
+  <!-- Heading -->
+  <div class="text-center mb-8">
+    <h1 class="text-2xl sm:text-3xl font-display font-semibold text-dark-900 dark:text-dark-50">
+      Bienvenido de nuevo
+    </h1>
+    <p class="mt-2 text-dark-600 dark:text-dark-400">
+      Ingresa tus credenciales para continuar
+    </p>
+  </div>
+
+  <!-- Error Alert -->
+  @if (authError()) {
+    <div
+      class="mb-6 p-4 rounded-lg bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800"
+      role="alert"
+    >
+      <div class="flex items-center gap-3">
+        <svg class="w-5 h-5 text-red-600 dark:text-red-400 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round"
+            d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z" />
+        </svg>
+        <p class="text-sm text-red-700 dark:text-red-300">{{ authError() }}</p>
+      </div>
+    </div>
+  }
+
+  <form [formGroup]="form" (ngSubmit)="onSubmit()" class="space-y-5">
+    <!-- Email Input -->
+    <app-input
+      formControlName="email"
+      label="Correo electrónico"
+      type="email"
+      placeholder="tu@correo.com"
+      autocomplete="email"
+      [required]="true"
+      [error]="getError('email')"
+    />
+
+    <!-- Password Input -->
+    <app-password-input
+      formControlName="password"
+      label="Contraseña"
+      placeholder="••••••••"
+      [required]="true"
+      [error]="getError('password')"
+    />
+
+    <!-- Remember Me + Forgot Password Row -->
+    <div class="flex items-center justify-between flex-wrap gap-2">
+      <app-checkbox
+        formControlName="rememberMe"
+        label="Recordar sesión"
+      />
+      <a routerLink="../forgot-password" class="link-primary text-sm">
+        ¿Olvidaste tu contraseña?
+      </a>
+    </div>
+
+    <!-- Submit Button -->
+    <button
+      type="submit"
+      class="btn-primary w-full flex items-center justify-center gap-2 h-12"
+      [disabled]="form.invalid || isLoading()"
+    >
+      @if (isLoading()) {
+        <app-spinner size="sm" />
+        <span>Iniciando sesión...</span>
+      } @else {
+        <span>Iniciar Sesión</span>
+      }
+    </button>
+  </form>
+
+  <!-- Register Link -->
+  <p class="mt-8 text-center text-dark-600 dark:text-dark-400">
+    ¿No tienes una cuenta?
+    <a routerLink="../register" class="link-primary font-medium">
+      Regístrate
+    </a>
+  </p>
+</div>

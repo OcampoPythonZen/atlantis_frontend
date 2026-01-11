@@ -1,0 +1,30 @@
+<div class="w-full">
+  @if (label) {
+    <label [for]="id" class="label">
+      {{ label }}
+      @if (required) {
+        <span class="text-red-500">*</span>
+      }
+    </label>
+  }
+
+  <input
+    [id]="id"
+    [type]="type"
+    [placeholder]="placeholder"
+    [disabled]="disabled"
+    [required]="required"
+    [autocomplete]="autocomplete"
+    [value]="value"
+    (input)="onInput($event)"
+    (blur)="onTouched()"
+    [class.input-error]="error"
+    class="input-base"
+  />
+
+  @if (error) {
+    <p class="error-message" role="alert">
+      {{ error }}
+    </p>
+  }
+</div>
