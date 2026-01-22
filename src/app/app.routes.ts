@@ -1,6 +1,7 @@
 import { Routes } from '@angular/router';
 import { authGuard } from './core/auth/guards/auth.guard';
 import { guestGuard } from './core/auth/guards/guest.guard';
+import { patientGuard } from './core/auth/guards/patient.guard';
 
 export const routes: Routes = [
   {
@@ -18,6 +19,13 @@ export const routes: Routes = [
     canActivate: [authGuard],
     loadComponent: () => import('./features/dashboard/dashboard.component')
       .then(m => m.DashboardComponent)
+  },
+  {
+    path: 'patient',
+    canActivate: [patientGuard],
+    loadChildren: () => import('./features/patient-portal/patient-portal.routes')
+      .then(m => m.PATIENT_PORTAL_ROUTES),
+    title: 'Portal del Paciente'
   },
   {
     path: '**',

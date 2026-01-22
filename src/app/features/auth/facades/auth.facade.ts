@@ -32,12 +32,31 @@ export class AuthFacade {
       }
 
       this.store.setLoading(false);
-      await this.router.navigate(['/dashboard']);
+
+      // Redirect based on user role
+      const redirectPath = this.getRedirectPathForRole(response.user.role);
+      await this.router.navigate([redirectPath]);
       return true;
     } catch (error: any) {
       this.store.setError(error.message || 'Error al iniciar sesión');
       this.store.setLoading(false);
       return false;
+    }
+  }
+
+  /**
+   * Returns the appropriate redirect path based on user role.
+   * - patient -> /patient (Patient Portal)
+   * - nutritionist, admin -> /dashboard (Main Dashboard)
+   */
+  private getRedirectPathForRole(role: string): string {
+    switch (role) {
+      case 'patient':
+        return '/patient';
+      case 'admin':
+      case 'nutritionist':
+      default:
+        return '/dashboard';
     }
   }
 

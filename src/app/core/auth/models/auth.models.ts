@@ -1,8 +1,10 @@
+export type UserRole = 'nutritionist' | 'admin' | 'patient';
+
 export interface User {
   id: string;
   email: string;
   fullName: string;
-  role: 'nutritionist' | 'admin';
+  role: UserRole;
   createdAt: string;
 }
 
