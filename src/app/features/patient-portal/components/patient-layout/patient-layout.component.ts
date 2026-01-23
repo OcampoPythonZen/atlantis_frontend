@@ -68,7 +68,7 @@ import { PatientPortalFacade } from '../../facades/patient-portal.facade';
           text-dark-500 dark:text-dark-400
           border-t border-dark-200 dark:border-dark-700
         ">
-          <p>NutriWolf &copy; {{ currentYear }} - Portal del Paciente</p>
+          <p>Atlantis &copy; {{ currentYear }} - Portal del Paciente</p>
         </footer>
       </div>
     </div>

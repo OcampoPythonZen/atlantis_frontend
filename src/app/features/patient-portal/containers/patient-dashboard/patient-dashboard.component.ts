@@ -86,8 +86,8 @@ import { NutritionistMessageCardComponent } from '../../components/dashboard/nut
           <!-- Nutritionist Message -->
           <app-nutritionist-message-card
             [nutritionistName]="nutritionist()?.fullName"
-            [message]="'Excelente progreso esta semana. Sigue así 💪'"
-            [sentAt]="lastMessageDate"
+            [message]="lastMessage()?.content"
+            [sentAt]="lastMessage()?.sentAt"
           />
         </div>
 
@@ -163,10 +163,8 @@ export class PatientDashboardComponent implements OnInit {
   readonly activePlan = this.facade.activePlan;
   readonly nextAppointment = this.facade.nextAppointment;
   readonly nutritionist = this.facade.nutritionist;
+  readonly lastMessage = this.facade.lastMessage;
   readonly daysUntilNextAppointment = this.facade.daysUntilNextAppointment;
-
-  // Mock date for last message
-  lastMessageDate = new Date('2025-01-20T11:02:00');
 
   ngOnInit(): void {
     this.loadData();

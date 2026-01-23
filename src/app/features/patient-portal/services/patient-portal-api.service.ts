@@ -1,6 +1,5 @@
-import { Injectable, inject } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Observable, of, delay } from 'rxjs';
+import { Injectable } from '@angular/core';
+import { Observable, of } from 'rxjs';
 import {
   Patient,
   PatientMedicalInfo,
@@ -24,8 +23,6 @@ import {
  */
 @Injectable({ providedIn: 'root' })
 export class PatientPortalApiService {
-  private readonly http = inject(HttpClient);
-  private readonly API_DELAY = 150; // Simulate network delay (reduced for better UX)
 
   // ============================================
   // DASHBOARD
@@ -44,7 +41,7 @@ export class PatientPortalApiService {
       nutritionist: this.getMockNutritionist()
     };
 
-    return of(mockData).pipe(delay(this.API_DELAY));
+    return of(mockData);
   }
 
   // ============================================
@@ -52,7 +49,7 @@ export class PatientPortalApiService {
   // ============================================
 
   getPatient(patientId: string): Observable<Patient> {
-    return of(this.getMockPatient()).pipe(delay(this.API_DELAY));
+    return of(this.getMockPatient());
   }
 
   getMedicalInfo(patientId: string): Observable<PatientMedicalInfo> {
@@ -63,11 +60,11 @@ export class PatientPortalApiService {
       medications: ['Levotiroxina 50mcg'],
       dietaryRestrictions: ['Sin gluten']
     };
-    return of(mockMedical).pipe(delay(this.API_DELAY));
+    return of(mockMedical);
   }
 
   getNutritionist(nutritionistId: string): Observable<Nutritionist> {
-    return of(this.getMockNutritionist()).pipe(delay(this.API_DELAY));
+    return of(this.getMockNutritionist());
   }
 
   // ============================================
@@ -75,19 +72,26 @@ export class PatientPortalApiService {
   // ============================================
 
   getCurrentMetrics(patientId: string): Observable<BodyMetrics> {
-    return of(this.getMockMetrics()).pipe(delay(this.API_DELAY));
+    return of(this.getMockMetrics());
   }
 
   getMetricsHistory(patientId: string): Observable<BodyMetrics[]> {
     const history: BodyMetrics[] = [
-      { ...this.getMockMetrics(), date: new Date('2025-01-20'), weight: 72.5, bmi: 24.2 },
-      { ...this.getMockMetrics(), id: '2', date: new Date('2025-01-13'), weight: 73.1, bmi: 24.4 },
-      { ...this.getMockMetrics(), id: '3', date: new Date('2025-01-06'), weight: 74.0, bmi: 24.7 },
-      { ...this.getMockMetrics(), id: '4', date: new Date('2024-12-30'), weight: 74.8, bmi: 25.0 },
-      { ...this.getMockMetrics(), id: '5', date: new Date('2024-12-23'), weight: 75.5, bmi: 25.2 },
-      { ...this.getMockMetrics(), id: '6', date: new Date('2024-12-15'), weight: 77.0, bmi: 25.7 },
+      { ...this.getMockMetrics(), date: this.daysAgo(3), weight: 72.5, bmi: 24.2 },
+      { ...this.getMockMetrics(), id: '2', date: this.daysAgo(10), weight: 73.1, bmi: 24.4 },
+      { ...this.getMockMetrics(), id: '3', date: this.daysAgo(17), weight: 74.0, bmi: 24.7 },
+      { ...this.getMockMetrics(), id: '4', date: this.daysAgo(24), weight: 74.8, bmi: 25.0 },
+      { ...this.getMockMetrics(), id: '5', date: this.daysAgo(31), weight: 75.5, bmi: 25.2 },
+      { ...this.getMockMetrics(), id: '6', date: this.daysAgo(40), weight: 77.0, bmi: 25.7 },
     ];
-    return of(history).pipe(delay(this.API_DELAY));
+    return of(history);
+  }
+
+  /** Helper to create a date N days ago */
+  private daysAgo(days: number): Date {
+    const date = new Date();
+    date.setDate(date.getDate() - days);
+    return date;
   }
 
   getWeightHistory(patientId: string): Observable<WeightRecord[]> {
@@ -104,7 +108,7 @@ export class PatientPortalApiService {
       { date: new Date('2025-01-01'), weight: 73.2 },
       { date: new Date('2025-01-15'), weight: 72.5 },
     ];
-    return of(history).pipe(delay(this.API_DELAY));
+    return of(history);
   }
 
   getCurrentMeasurements(patientId: string): Observable<BodyMeasurements> {
@@ -119,7 +123,7 @@ export class PatientPortalApiService {
       thigh: 55,
       registeredBy: 'Dra. Ana López'
     };
-    return of(measurements).pipe(delay(this.API_DELAY));
+    return of(measurements);
   }
 
   getInitialMeasurements(patientId: string): Observable<BodyMeasurements> {
@@ -134,7 +138,7 @@ export class PatientPortalApiService {
       thigh: 58,
       registeredBy: 'Dra. Ana López'
     };
-    return of(measurements).pipe(delay(this.API_DELAY));
+    return of(measurements);
   }
 
   // ============================================
@@ -142,12 +146,12 @@ export class PatientPortalApiService {
   // ============================================
 
   getActivePlan(patientId: string): Observable<NutritionPlan | null> {
-    return of(this.getMockNutritionPlan()).pipe(delay(this.API_DELAY));
+    return of(this.getMockNutritionPlan());
   }
 
   getWeeklyMenu(planId: string): Observable<DailyMenu[]> {
     const menu = this.getMockWeeklyMenu();
-    return of(menu).pipe(delay(this.API_DELAY));
+    return of(menu);
   }
 
   getFoodLists(planId: string): Observable<{ allowed: FoodList; restricted: FoodList }> {
@@ -184,7 +188,7 @@ export class PatientPortalApiService {
       ]
     };
 
-    return of({ allowed, restricted }).pipe(delay(this.API_DELAY));
+    return of({ allowed, restricted });
   }
 
   // ============================================
@@ -192,7 +196,7 @@ export class PatientPortalApiService {
   // ============================================
 
   getNextAppointment(patientId: string): Observable<Appointment | null> {
-    return of(this.getMockNextAppointment()).pipe(delay(this.API_DELAY));
+    return of(this.getMockNextAppointment());
   }
 
   getAppointmentHistory(patientId: string): Observable<Appointment[]> {
@@ -224,7 +228,7 @@ export class PatientPortalApiService {
         notes: 'Primera consulta. Se estableció plan de pérdida gradual de 500g por semana.'
       }
     ];
-    return of(history).pipe(delay(this.API_DELAY));
+    return of(history);
   }
 
   // ============================================
@@ -240,7 +244,7 @@ export class PatientPortalApiService {
       nutritionistPhotoUrl: undefined,
       unreadCount: 1
     };
-    return of(conversation).pipe(delay(this.API_DELAY));
+    return of(conversation);
   }
 
   getMessages(conversationId: string): Observable<Message[]> {
@@ -274,7 +278,7 @@ export class PatientPortalApiService {
         status: 'delivered'
       }
     ];
-    return of(messages).pipe(delay(this.API_DELAY));
+    return of(messages);
   }
 
   sendMessage(conversationId: string, content: string): Observable<Message> {
@@ -287,7 +291,7 @@ export class PatientPortalApiService {
       sentAt: new Date(),
       status: 'sent'
     };
-    return of(message).pipe(delay(this.API_DELAY));
+    return of(message);
   }
 
   // ============================================
@@ -330,7 +334,7 @@ export class PatientPortalApiService {
         uploadedBy: 'Dra. Ana López'
       }
     ];
-    return of(documents).pipe(delay(this.API_DELAY));
+    return of(documents);
   }
 
   // ============================================
@@ -353,10 +357,14 @@ export class PatientPortalApiService {
   }
 
   private getMockMetrics(): BodyMetrics {
+    // Use relative date (3 days ago)
+    const date = new Date();
+    date.setDate(date.getDate() - 3);
+
     return {
       id: '1',
       patientId: '1',
-      date: new Date('2025-01-20'),
+      date,
       weight: 72.5,
       height: 173,
       bmi: 24.2,
@@ -384,12 +392,17 @@ export class PatientPortalApiService {
   }
 
   private getMockNextAppointment(): Appointment {
+    // Use relative date (5 days from now)
+    const date = new Date();
+    date.setDate(date.getDate() + 5);
+    date.setHours(10, 0, 0, 0);
+
     return {
       id: '1',
       patientId: '1',
       nutritionistId: '1',
       nutritionistName: 'Dra. Ana López',
-      date: new Date('2025-01-27'),
+      date,
       time: '10:00',
       duration: 30,
       type: 'follow_up',
@@ -399,13 +412,17 @@ export class PatientPortalApiService {
   }
 
   private getMockLastMessage(): Message {
+    // Use relative date (2 hours ago)
+    const sentAt = new Date();
+    sentAt.setHours(sentAt.getHours() - 2);
+
     return {
       id: '3',
       conversationId: '1',
       senderId: '1',
       senderType: 'nutritionist',
       content: 'Sí, claro. El atún es una excelente opción. Usa la misma cantidad (150g).',
-      sentAt: new Date('2025-01-20T11:02:00'),
+      sentAt,
       status: 'delivered'
     };
   }

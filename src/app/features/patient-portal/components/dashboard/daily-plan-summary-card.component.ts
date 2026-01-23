@@ -8,7 +8,7 @@ import { RouterModule } from '@angular/router';
   imports: [CommonModule, RouterModule],
   template: `
     <article
-      class="bg-white dark:bg-dark-800 rounded-xl border border-dark-200 dark:border-dark-700 p-6 hover:shadow-md transition-shadow"
+      class="h-full flex flex-col bg-white dark:bg-dark-800 rounded-xl border border-dark-200 dark:border-dark-700 p-6 hover:shadow-md transition-shadow"
       aria-labelledby="daily-plan-title"
     >
       <header class="flex items-center justify-between mb-4">
@@ -25,6 +25,7 @@ import { RouterModule } from '@angular/router';
         </div>
       </header>
 
+      <div class="flex-1">
       @if (planName()) {
         <!-- Plan name -->
         <p class="text-sm text-dark-600 dark:text-dark-400 mb-4">
@@ -88,9 +89,10 @@ import { RouterModule } from '@angular/router';
           </p>
         </div>
       }
+      </div>
 
       <!-- Link to plan page -->
-      <footer class="mt-4 pt-4 border-t border-dark-200 dark:border-dark-700">
+      <footer class="mt-auto pt-4 border-t border-dark-200 dark:border-dark-700">
         <a
           routerLink="/patient/plan"
           class="text-sm text-primary-600 dark:text-primary-400 hover:text-primary-700 dark:hover:text-primary-300 font-medium flex items-center gap-1"

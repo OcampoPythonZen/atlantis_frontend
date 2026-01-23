@@ -15,7 +15,7 @@ import { ThemeService } from '../../../../core/services/theme.service';
       border-b border-dark-200 dark:border-dark-700
     ">
       <div class="
-        h-full max-w-7xl mx-auto
+        h-full w-full
         px-4 lg:px-6 xl:px-8
         flex items-center justify-between
       ">

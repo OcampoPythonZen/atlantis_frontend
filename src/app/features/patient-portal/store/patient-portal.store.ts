@@ -43,6 +43,7 @@ interface PatientPortalState {
   // Messages
   conversation: Conversation | null;
   messages: Message[];
+  lastMessage: Message | null;
 
   // Documents
   documents: DocumentFile[];
@@ -71,6 +72,7 @@ const initialState: PatientPortalState = {
   appointmentHistory: [],
   conversation: null,
   messages: [],
+  lastMessage: null,
   documents: [],
   isLoading: false,
   error: null
@@ -112,6 +114,7 @@ export class PatientPortalStore {
   // Messages
   readonly conversation = computed(() => this._state().conversation);
   readonly messages = computed(() => this._state().messages);
+  readonly lastMessage = computed(() => this._state().lastMessage);
   readonly unreadCount = computed(() => this._state().conversation?.unreadCount ?? 0);
 
   // Documents
@@ -235,6 +238,10 @@ export class PatientPortalStore {
       ...state,
       messages: [...state.messages, message]
     }));
+  }
+
+  setLastMessage(message: Message | null): void {
+    this._state.update(state => ({ ...state, lastMessage: message }));
   }
 
   setDocuments(documents: DocumentFile[]): void {

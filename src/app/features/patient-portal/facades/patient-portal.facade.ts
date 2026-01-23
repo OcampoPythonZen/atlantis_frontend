@@ -1,4 +1,4 @@
-import { Injectable, inject, computed, NgZone } from '@angular/core';
+import { Injectable, inject, computed, ApplicationRef } from '@angular/core';
 import { firstValueFrom } from 'rxjs';
 import { PatientPortalStore } from '../store/patient-portal.store';
 import { PatientPortalApiService } from '../services/patient-portal-api.service';
@@ -12,7 +12,6 @@ import { TimeRange, Message } from '../models/patient.model';
 export class PatientPortalFacade {
   private readonly store = inject(PatientPortalStore);
   private readonly api = inject(PatientPortalApiService);
-  private readonly ngZone = inject(NgZone);
 
   // Current patient ID (would come from auth in real app)
   private readonly currentPatientId = '1';
@@ -55,6 +54,7 @@ export class PatientPortalFacade {
   // Messages
   readonly conversation = this.store.conversation;
   readonly messages = this.store.messages;
+  readonly lastMessage = this.store.lastMessage;
   readonly unreadMessages = this.store.unreadCount;
 
   // Documents
@@ -91,43 +91,40 @@ export class PatientPortalFacade {
   // ============================================
 
   async loadDashboard(): Promise<void> {
-    this.ngZone.run(() => {
-      this.store.setLoading(true);
-      this.store.setError(null);
-    });
+    this.store.setLoading(true);
+    this.store.setError(null);
 
     try {
       const data = await firstValueFrom(
         this.api.getDashboardData(this.currentPatientId)
       );
 
-      this.ngZone.run(() => {
-        this.store.setPatient(data.patient);
-        this.store.setNutritionist(data.nutritionist);
+      this.store.setPatient(data.patient);
+      this.store.setNutritionist(data.nutritionist);
 
-        if (data.currentMetrics) {
-          this.store.setCurrentMetrics(data.currentMetrics);
-        }
-        if (data.targetWeight) {
-          this.store.setTargetWeight(data.targetWeight);
-        }
-        if (data.initialWeight) {
-          this.store.setInitialWeight(data.initialWeight);
-        }
-        if (data.activePlan) {
-          this.store.setActivePlan(data.activePlan);
-        }
-        if (data.nextAppointment) {
-          this.store.setNextAppointment(data.nextAppointment);
-        }
-      });
+      if (data.currentMetrics) {
+        this.store.setCurrentMetrics(data.currentMetrics);
+      }
+      if (data.targetWeight) {
+        this.store.setTargetWeight(data.targetWeight);
+      }
+      if (data.initialWeight) {
+        this.store.setInitialWeight(data.initialWeight);
+      }
+      if (data.activePlan) {
+        this.store.setActivePlan(data.activePlan);
+      }
+      if (data.nextAppointment) {
+        this.store.setNextAppointment(data.nextAppointment);
+      }
+      if (data.lastMessage) {
+        this.store.setLastMessage(data.lastMessage);
+      }
 
     } catch (error) {
       this.handleError(error, 'Error al cargar el dashboard');
     } finally {
-      this.ngZone.run(() => {
-        this.store.setLoading(false);
-      });
+      this.store.setLoading(false);
     }
   }
 
@@ -136,10 +133,8 @@ export class PatientPortalFacade {
   // ============================================
 
   async loadProfile(): Promise<void> {
-    this.ngZone.run(() => {
-      this.store.setLoading(true);
-      this.store.setError(null);
-    });
+    this.store.setLoading(true);
+    this.store.setError(null);
 
     try {
       const [patient, medicalInfo, nutritionist] = await Promise.all([
@@ -148,18 +143,14 @@ export class PatientPortalFacade {
         firstValueFrom(this.api.getNutritionist('1'))
       ]);
 
-      this.ngZone.run(() => {
-        this.store.setPatient(patient);
-        this.store.setMedicalInfo(medicalInfo);
-        this.store.setNutritionist(nutritionist);
-      });
+      this.store.setPatient(patient);
+      this.store.setMedicalInfo(medicalInfo);
+      this.store.setNutritionist(nutritionist);
 
     } catch (error) {
       this.handleError(error, 'Error al cargar el perfil');
     } finally {
-      this.ngZone.run(() => {
-        this.store.setLoading(false);
-      });
+      this.store.setLoading(false);
     }
   }
 
@@ -168,10 +159,8 @@ export class PatientPortalFacade {
   // ============================================
 
   async loadProgress(): Promise<void> {
-    this.ngZone.run(() => {
-      this.store.setLoading(true);
-      this.store.setError(null);
-    });
+    this.store.setLoading(true);
+    this.store.setError(null);
 
     try {
       const [
@@ -188,27 +177,23 @@ export class PatientPortalFacade {
         firstValueFrom(this.api.getInitialMeasurements(this.currentPatientId))
       ]);
 
-      this.ngZone.run(() => {
-        this.store.setCurrentMetrics(currentMetrics);
-        this.store.setMetricsHistory(metricsHistory);
-        this.store.setWeightHistory(weightHistory);
-        this.store.setCurrentMeasurements(currentMeasurements);
+      this.store.setCurrentMetrics(currentMetrics);
+      this.store.setMetricsHistory(metricsHistory);
+      this.store.setWeightHistory(weightHistory);
+      this.store.setCurrentMeasurements(currentMeasurements);
 
-        // Set initial weight from first metrics
-        if (metricsHistory.length > 0) {
-          const firstMetric = metricsHistory[metricsHistory.length - 1];
-          if (firstMetric) {
-            this.store.setInitialWeight(firstMetric.weight);
-          }
+      // Set initial weight from first metrics
+      if (metricsHistory.length > 0) {
+        const firstMetric = metricsHistory[metricsHistory.length - 1];
+        if (firstMetric) {
+          this.store.setInitialWeight(firstMetric.weight);
         }
-      });
+      }
 
     } catch (error) {
       this.handleError(error, 'Error al cargar el progreso');
     } finally {
-      this.ngZone.run(() => {
-        this.store.setLoading(false);
-      });
+      this.store.setLoading(false);
     }
   }
 
@@ -243,10 +228,8 @@ export class PatientPortalFacade {
   // ============================================
 
   async loadNutritionPlan(): Promise<void> {
-    this.ngZone.run(() => {
-      this.store.setLoading(true);
-      this.store.setError(null);
-    });
+    this.store.setLoading(true);
+    this.store.setError(null);
 
     try {
       const plan = await firstValueFrom(
@@ -254,28 +237,23 @@ export class PatientPortalFacade {
       );
 
       if (plan) {
+        this.store.setActivePlan(plan);
+
         const [menu, foodLists] = await Promise.all([
           firstValueFrom(this.api.getWeeklyMenu(plan.id)),
           firstValueFrom(this.api.getFoodLists(plan.id))
         ]);
 
-        this.ngZone.run(() => {
-          this.store.setActivePlan(plan);
-          this.store.setWeeklyMenu(menu);
-          this.store.setFoodLists(foodLists.allowed, foodLists.restricted);
-        });
+        this.store.setWeeklyMenu(menu);
+        this.store.setFoodLists(foodLists.allowed, foodLists.restricted);
       } else {
-        this.ngZone.run(() => {
-          this.store.setActivePlan(null);
-        });
+        this.store.setActivePlan(null);
       }
 
     } catch (error) {
       this.handleError(error, 'Error al cargar el plan nutricional');
     } finally {
-      this.ngZone.run(() => {
-        this.store.setLoading(false);
-      });
+      this.store.setLoading(false);
     }
   }
 
@@ -288,10 +266,8 @@ export class PatientPortalFacade {
   // ============================================
 
   async loadAppointments(): Promise<void> {
-    this.ngZone.run(() => {
-      this.store.setLoading(true);
-      this.store.setError(null);
-    });
+    this.store.setLoading(true);
+    this.store.setError(null);
 
     try {
       const [nextAppointment, history] = await Promise.all([
@@ -299,17 +275,13 @@ export class PatientPortalFacade {
         firstValueFrom(this.api.getAppointmentHistory(this.currentPatientId))
       ]);
 
-      this.ngZone.run(() => {
-        this.store.setNextAppointment(nextAppointment);
-        this.store.setAppointmentHistory(history);
-      });
+      this.store.setNextAppointment(nextAppointment);
+      this.store.setAppointmentHistory(history);
 
     } catch (error) {
       this.handleError(error, 'Error al cargar las citas');
     } finally {
-      this.ngZone.run(() => {
-        this.store.setLoading(false);
-      });
+      this.store.setLoading(false);
     }
   }
 
@@ -338,31 +310,24 @@ export class PatientPortalFacade {
   // ============================================
 
   async loadMessages(): Promise<void> {
-    this.ngZone.run(() => {
-      this.store.setLoading(true);
-      this.store.setError(null);
-    });
+    this.store.setLoading(true);
+    this.store.setError(null);
 
     try {
       const conversation = await firstValueFrom(
         this.api.getConversation(this.currentPatientId)
       );
+      this.store.setConversation(conversation);
 
       const messages = await firstValueFrom(
         this.api.getMessages(conversation.id)
       );
-
-      this.ngZone.run(() => {
-        this.store.setConversation(conversation);
-        this.store.setMessages(messages);
-      });
+      this.store.setMessages(messages);
 
     } catch (error) {
       this.handleError(error, 'Error al cargar los mensajes');
     } finally {
-      this.ngZone.run(() => {
-        this.store.setLoading(false);
-      });
+      this.store.setLoading(false);
     }
   }
 
@@ -374,9 +339,7 @@ export class PatientPortalFacade {
       const message = await firstValueFrom(
         this.api.sendMessage(conversation.id, content)
       );
-      this.ngZone.run(() => {
-        this.store.addMessage(message);
-      });
+      this.store.addMessage(message);
       return true;
 
     } catch (error) {
@@ -390,26 +353,19 @@ export class PatientPortalFacade {
   // ============================================
 
   async loadDocuments(): Promise<void> {
-    this.ngZone.run(() => {
-      this.store.setLoading(true);
-      this.store.setError(null);
-    });
+    this.store.setLoading(true);
+    this.store.setError(null);
 
     try {
       const documents = await firstValueFrom(
         this.api.getDocuments(this.currentPatientId)
       );
-
-      this.ngZone.run(() => {
-        this.store.setDocuments(documents);
-      });
+      this.store.setDocuments(documents);
 
     } catch (error) {
       this.handleError(error, 'Error al cargar los documentos');
     } finally {
-      this.ngZone.run(() => {
-        this.store.setLoading(false);
-      });
+      this.store.setLoading(false);
     }
   }
 

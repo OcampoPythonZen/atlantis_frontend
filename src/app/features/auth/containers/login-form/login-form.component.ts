@@ -1,7 +1,8 @@
-import { Component, inject, signal } from '@angular/core';
+import { Component, inject, signal, DestroyRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { InputComponent } from '../../../../shared/components/ui/input/input.component';
 import { PasswordInputComponent } from '../../components/password-input/password-input.component';
 import { CheckboxComponent } from '../../../../shared/components/ui/checkbox/checkbox.component';
@@ -42,6 +43,7 @@ import { getValidationMessage } from '../../../../shared/validators/custom-valid
 export class LoginFormComponent {
   private readonly fb = inject(FormBuilder);
   private readonly authFacade = inject(AuthFacade);
+  private readonly destroyRef = inject(DestroyRef);
 
   readonly isLoading = this.authFacade.isLoading;
   readonly authError = this.authFacade.error;
@@ -52,7 +54,18 @@ export class LoginFormComponent {
     rememberMe: [false]
   });
 
+  // Signal to track form validity for zoneless change detection
+  readonly isFormValid = signal(false);
   private submitted = signal(false);
+
+  constructor() {
+    // Subscribe to form status changes to update the signal
+    this.form.statusChanges
+      .pipe(takeUntilDestroyed(this.destroyRef))
+      .subscribe(() => {
+        this.isFormValid.set(this.form.valid);
+      });
+  }
 
   getError(fieldName: string): string {
     const control = this.form.get(fieldName);
