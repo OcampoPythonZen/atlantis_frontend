@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit, signal, computed, HostListener, ElementRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { FormsModule } from '@angular/forms';
@@ -118,8 +118,118 @@ import { PatientDocumentsTabComponent } from '../../components/patient-detail-ta
 
         <!-- Tabs -->
         <div class="bg-white dark:bg-dark-800 rounded-xl border border-dark-200 dark:border-dark-700 overflow-hidden">
-          <div class="border-b border-dark-200 dark:border-dark-700 overflow-x-auto">
-            <nav class="flex min-w-max px-4 lg:px-6" role="tablist">
+          <!-- Mobile: Dropdown selector -->
+          <div class="md:hidden relative border-b border-dark-200 dark:border-dark-700">
+            <button
+              (click)="toggleTabMenu()"
+              class="
+                w-full flex items-center justify-between
+                px-4 py-3.5
+                text-left font-medium
+                text-dark-900 dark:text-dark-50
+                hover:bg-dark-50 dark:hover:bg-dark-700/50
+                transition-colors
+              "
+              [attr.aria-expanded]="isTabMenuOpen()"
+              aria-haspopup="listbox"
+            >
+              <span class="flex items-center gap-3">
+                <span class="w-8 h-8 rounded-lg bg-primary-100 dark:bg-primary-900/30 flex items-center justify-center">
+                  @switch (activeTab) {
+                    @case ('info') {
+                      <svg class="w-4 h-4 text-primary-600 dark:text-primary-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                      </svg>
+                    }
+                    @case ('progress') {
+                      <svg class="w-4 h-4 text-primary-600 dark:text-primary-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                      </svg>
+                    }
+                    @case ('plan') {
+                      <svg class="w-4 h-4 text-primary-600 dark:text-primary-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
+                      </svg>
+                    }
+                    @case ('appointments') {
+                      <svg class="w-4 h-4 text-primary-600 dark:text-primary-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                      </svg>
+                    }
+                    @case ('messages') {
+                      <svg class="w-4 h-4 text-primary-600 dark:text-primary-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+                      </svg>
+                    }
+                    @case ('documents') {
+                      <svg class="w-4 h-4 text-primary-600 dark:text-primary-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z" />
+                      </svg>
+                    }
+                    @case ('notes') {
+                      <svg class="w-4 h-4 text-primary-600 dark:text-primary-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+                      </svg>
+                    }
+                  }
+                </span>
+                <span>{{ activeTabLabel() }}</span>
+              </span>
+              <svg
+                class="w-5 h-5 text-dark-400 transition-transform duration-200"
+                [class.rotate-180]="isTabMenuOpen()"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+              </svg>
+            </button>
+
+            <!-- Dropdown menu -->
+            @if (isTabMenuOpen()) {
+              <div
+                class="
+                  absolute left-0 right-0 top-full z-50
+                  bg-white dark:bg-dark-800
+                  border-x border-b border-dark-200 dark:border-dark-700
+                  rounded-b-xl
+                  shadow-lg
+                  max-h-80 overflow-y-auto
+                "
+                role="listbox"
+              >
+                @for (tab of tabs; track tab.id) {
+                  <button
+                    (click)="selectTab(tab.id)"
+                    role="option"
+                    [attr.aria-selected]="activeTab === tab.id"
+                    class="
+                      w-full flex items-center gap-3 px-4 py-3
+                      text-left text-sm
+                      transition-colors
+                    "
+                    [class]="activeTab === tab.id
+                      ? 'bg-primary-50 dark:bg-primary-900/20 text-primary-700 dark:text-primary-400'
+                      : 'text-dark-700 dark:text-dark-300 hover:bg-dark-50 dark:hover:bg-dark-700/50'"
+                  >
+                    @if (activeTab === tab.id) {
+                      <svg class="w-4 h-4 text-primary-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                      </svg>
+                    } @else {
+                      <span class="w-4"></span>
+                    }
+                    <span class="font-medium">{{ tab.label }}</span>
+                  </button>
+                }
+              </div>
+            }
+          </div>
+
+          <!-- Desktop: Traditional tabs -->
+          <div class="hidden md:block border-b border-dark-200 dark:border-dark-700">
+            <nav class="flex px-4 lg:px-6" role="tablist">
               @for (tab of tabs; track tab.id) {
                 <button
                   (click)="activeTab = tab.id"
@@ -375,10 +485,14 @@ import { PatientDocumentsTabComponent } from '../../components/patient-detail-ta
 export class PatientDetailComponent implements OnInit {
   readonly facade = inject(NutritionistPortalFacade);
   private readonly route = inject(ActivatedRoute);
+  private readonly elementRef = inject(ElementRef);
 
   activeTab = 'info';
   newNoteContent = '';
   isNotePrivate = false;
+
+  // Mobile tab menu state
+  isTabMenuOpen = signal(false);
 
   readonly tabs = [
     { id: 'info', label: 'Información' },
@@ -389,6 +503,28 @@ export class PatientDetailComponent implements OnInit {
     { id: 'documents', label: 'Documentos' },
     { id: 'notes', label: 'Notas Clínicas' }
   ];
+
+  // Computed label for active tab
+  activeTabLabel = computed(() => {
+    const tab = this.tabs.find(t => t.id === this.activeTab);
+    return tab?.label || 'Información';
+  });
+
+  // Close dropdown when clicking outside
+  @HostListener('document:click', ['$event'])
+  onClickOutside(event: MouseEvent): void {
+    if (this.isTabMenuOpen() && !this.elementRef.nativeElement.contains(event.target)) {
+      this.isTabMenuOpen.set(false);
+    }
+  }
+
+  // Close dropdown on escape key
+  @HostListener('document:keydown.escape')
+  onEscapePress(): void {
+    if (this.isTabMenuOpen()) {
+      this.isTabMenuOpen.set(false);
+    }
+  }
 
   ngOnInit(): void {
     const patientId = this.route.snapshot.paramMap.get('id');
@@ -404,6 +540,15 @@ export class PatientDetailComponent implements OnInit {
       .join('')
       .substring(0, 2)
       .toUpperCase();
+  }
+
+  toggleTabMenu(): void {
+    this.isTabMenuOpen.update(v => !v);
+  }
+
+  selectTab(tabId: string): void {
+    this.activeTab = tabId;
+    this.isTabMenuOpen.set(false);
   }
 
   async addClinicalNote(patientId: string): Promise<void> {

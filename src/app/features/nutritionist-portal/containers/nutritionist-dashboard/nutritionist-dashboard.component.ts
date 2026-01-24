@@ -12,33 +12,13 @@ import { PatientSummary, PatientFilterStatus } from '../../models/nutritionist.m
   template: `
     <div class="space-y-6">
       <!-- Page header -->
-      <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-        <div>
-          <h1 class="text-2xl font-display font-bold text-dark-900 dark:text-dark-50">
-            Mis Pacientes
-          </h1>
-          <p class="mt-1 text-dark-600 dark:text-dark-400">
-            Gestiona y da seguimiento a tus pacientes
-          </p>
-        </div>
-
-        <!-- Add patient button (mobile) -->
-        <button
-          (click)="onAddPatient()"
-          class="
-            sm:hidden flex items-center justify-center gap-2
-            px-4 py-2 rounded-lg
-            bg-primary-500 hover:bg-primary-600
-            text-dark-950 font-medium
-            transition-colors
-          "
-          aria-label="Agregar nuevo paciente"
-        >
-          <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
-          </svg>
-          Nuevo Paciente
-        </button>
+      <div>
+        <h1 class="text-2xl font-display font-bold text-dark-900 dark:text-dark-50">
+          Mis Pacientes
+        </h1>
+        <p class="mt-1 text-dark-600 dark:text-dark-400">
+          Gestiona y da seguimiento a tus pacientes
+        </p>
       </div>
 
       <!-- Stats cards -->
