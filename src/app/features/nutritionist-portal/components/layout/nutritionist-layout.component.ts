@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { RouterModule, Router } from '@angular/router';
 import { NutritionistSidebarComponent } from './nutritionist-sidebar.component';
 import { NutritionistHeaderComponent } from './nutritionist-header.component';
+import { CreatePatientModalComponent } from '../modals/create-patient-modal/create-patient-modal.component';
 import { NutritionistPortalFacade } from '../../facades/nutritionist-portal.facade';
 
 @Component({
@@ -12,7 +13,8 @@ import { NutritionistPortalFacade } from '../../facades/nutritionist-portal.faca
     CommonModule,
     RouterModule,
     NutritionistSidebarComponent,
-    NutritionistHeaderComponent
+    NutritionistHeaderComponent,
+    CreatePatientModalComponent
   ],
   template: `
     <div class="min-h-screen bg-dark-50 dark:bg-dark-950 overflow-x-hidden">
@@ -74,6 +76,9 @@ import { NutritionistPortalFacade } from '../../facades/nutritionist-portal.faca
           <p>Atlantis &copy; {{ currentYear }} - Portal del Nutriólogo</p>
         </footer>
       </div>
+
+      <!-- Modals -->
+      <app-create-patient-modal />
     </div>
   `
 })
