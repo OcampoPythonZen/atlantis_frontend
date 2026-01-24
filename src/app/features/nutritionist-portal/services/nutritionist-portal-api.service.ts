@@ -251,10 +251,10 @@ export class NutritionistPortalApiService {
     return {
       id: '1',
       fullName: 'Dra. Ana López',
-      email: 'ana.lopez@nutriwolf.com',
+      email: 'ana.lopez@atlantis.com',
       phone: '+52 55 9876 5432',
       specialty: 'Nutrición Clínica',
-      clinicName: 'NutriWolf Clinic',
+      clinicName: 'Atlantis Clinic',
       clinicAddress: 'Av. Reforma 123, Col. Centro, CDMX'
     };
   }
@@ -263,12 +263,12 @@ export class NutritionistPortalApiService {
     return {
       id: '1',
       fullName: 'Dra. Ana López',
-      email: 'ana.lopez@nutriwolf.com',
+      email: 'ana.lopez@atlantis.com',
       phone: '+52 55 9876 5432',
       specialty: 'Nutrición Clínica',
       licenseNumber: 'CED-12345678',
-      clinic: 'NutriWolf Clinic',
-      clinicName: 'NutriWolf Clinic',
+      clinic: 'Atlantis Clinic',
+      clinicName: 'Atlantis Clinic',
       address: 'Av. Reforma 123, Col. Centro, CDMX',
       clinicAddress: 'Av. Reforma 123, Col. Centro, CDMX',
       clinicPhone: '+52 55 1234 5678',
@@ -650,21 +650,21 @@ export class NutritionistPortalApiService {
       {
         id: '2',
         fullName: 'Dr. Carlos Ruiz',
-        email: 'carlos.ruiz@nutriwolf.com',
+        email: 'carlos.ruiz@atlantis.com',
         phone: '+52 55 1111 2222',
         specialty: 'Endocrinología Nutricional'
       },
       {
         id: '3',
         fullName: 'Dra. María Fernández',
-        email: 'maria.fernandez@nutriwolf.com',
+        email: 'maria.fernandez@atlantis.com',
         phone: '+52 55 3333 4444',
         specialty: 'Nutrición Deportiva'
       },
       {
         id: '4',
         fullName: 'Dr. José Martínez',
-        email: 'jose.martinez@nutriwolf.com',
+        email: 'jose.martinez@atlantis.com',
         phone: '+52 55 5555 6666',
         specialty: 'Nutrición Pediátrica'
       }

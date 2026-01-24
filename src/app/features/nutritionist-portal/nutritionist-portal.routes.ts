@@ -54,6 +54,13 @@ export const NUTRITIONIST_PORTAL_ROUTES: Routes = [
           import('./containers/nutritionist-profile/nutritionist-profile.component')
             .then(m => m.NutritionistProfileComponent),
         title: 'Mi Perfil - Portal del Nutriólogo'
+      },
+      {
+        path: 'settings',
+        loadComponent: () =>
+          import('./containers/nutritionist-settings/nutritionist-settings.component')
+            .then(m => m.NutritionistSettingsComponent),
+        title: 'Configuración - Portal del Nutriólogo'
       }
     ]
   }

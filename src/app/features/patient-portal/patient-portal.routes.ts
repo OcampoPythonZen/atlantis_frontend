@@ -54,6 +54,13 @@ export const PATIENT_PORTAL_ROUTES: Routes = [
           import('./containers/patient-documents/patient-documents.component')
             .then(m => m.PatientDocumentsComponent),
         title: 'Documentos - Portal del Paciente'
+      },
+      {
+        path: 'settings',
+        loadComponent: () =>
+          import('./containers/patient-settings/patient-settings.component')
+            .then(m => m.PatientSettingsComponent),
+        title: 'Configuración - Portal del Paciente'
       }
     ]
   }

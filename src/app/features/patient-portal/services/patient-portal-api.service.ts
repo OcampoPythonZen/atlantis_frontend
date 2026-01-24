@@ -431,10 +431,10 @@ export class PatientPortalApiService {
     return {
       id: '1',
       fullName: 'Dra. Ana López',
-      email: 'ana.lopez@nutriwolf.com',
+      email: 'ana.lopez@atlantis.com',
       phone: '+52 55 9876 5432',
       specialty: 'Nutrición Clínica',
-      clinicName: 'NutriWolf Clinic',
+      clinicName: 'Atlantis Clinic',
       clinicAddress: 'Av. Reforma 123, Col. Centro, CDMX'
     };
   }

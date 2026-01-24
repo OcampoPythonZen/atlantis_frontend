@@ -18,4 +18,6 @@ import { ThemeService } from '../../../../core/services/theme.service';
 })
 export class AuthPageComponent {
   private readonly themeService = inject(ThemeService);
+
+  currentYear = new Date().getFullYear();
 }
