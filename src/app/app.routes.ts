@@ -2,6 +2,7 @@ import { Routes } from '@angular/router';
 import { authGuard } from './core/auth/guards/auth.guard';
 import { guestGuard } from './core/auth/guards/guest.guard';
 import { patientGuard } from './core/auth/guards/patient.guard';
+import { nutritionistGuard } from './core/auth/guards/nutritionist.guard';
 
 export const routes: Routes = [
   {
@@ -26,6 +27,13 @@ export const routes: Routes = [
     loadChildren: () => import('./features/patient-portal/patient-portal.routes')
       .then(m => m.PATIENT_PORTAL_ROUTES),
     title: 'Portal del Paciente'
+  },
+  {
+    path: 'nutritionist',
+    canActivate: [nutritionistGuard],
+    loadChildren: () => import('./features/nutritionist-portal/nutritionist-portal.routes')
+      .then(m => m.NUTRITIONIST_PORTAL_ROUTES),
+    title: 'Portal del Nutriólogo'
   },
   {
     path: '**',

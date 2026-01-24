@@ -1,10 +1,13 @@
 import { Injectable, signal, effect } from '@angular/core';
 
+/**
+ * Theme Service - Follows System Preference
+ * Automatically syncs with OS dark/light mode setting
+ */
 @Injectable({
   providedIn: 'root'
 })
 export class ThemeService {
-  private readonly STORAGE_KEY = 'atlantis-theme';
   private readonly _isDarkMode = signal(false);
 
   readonly isDarkMode = this._isDarkMode.asReadonly();
@@ -18,32 +21,17 @@ export class ThemeService {
     });
   }
 
-  toggle(): void {
-    this.setDarkMode(!this._isDarkMode());
-  }
-
-  setDarkMode(value: boolean): void {
-    this._isDarkMode.set(value);
-    localStorage.setItem(this.STORAGE_KEY, value ? 'dark' : 'light');
-  }
-
   private initializeTheme(): void {
-    const stored = localStorage.getItem(this.STORAGE_KEY);
-
-    if (stored) {
-      this._isDarkMode.set(stored === 'dark');
-    } else {
-      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-      this._isDarkMode.set(prefersDark);
-    }
+    // Always follow system preference
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    this._isDarkMode.set(prefersDark);
   }
 
   private watchSystemPreference(): void {
+    // Listen for system theme changes in real-time
     window.matchMedia('(prefers-color-scheme: dark)')
       .addEventListener('change', (e) => {
-        if (!localStorage.getItem(this.STORAGE_KEY)) {
-          this._isDarkMode.set(e.matches);
-        }
+        this._isDarkMode.set(e.matches);
       });
   }
 

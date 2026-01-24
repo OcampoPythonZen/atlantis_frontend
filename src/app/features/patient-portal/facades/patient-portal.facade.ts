@@ -12,6 +12,7 @@ import { TimeRange, Message } from '../models/patient.model';
 export class PatientPortalFacade {
   private readonly store = inject(PatientPortalStore);
   private readonly api = inject(PatientPortalApiService);
+  private readonly appRef = inject(ApplicationRef);
 
   // Current patient ID (would come from auth in real app)
   private readonly currentPatientId = '1';
@@ -114,17 +115,17 @@ export class PatientPortalFacade {
       if (data.activePlan) {
         this.store.setActivePlan(data.activePlan);
       }
-      if (data.nextAppointment) {
-        this.store.setNextAppointment(data.nextAppointment);
-      }
-      if (data.lastMessage) {
-        this.store.setLastMessage(data.lastMessage);
-      }
+      this.store.setNextAppointment(data.nextAppointment ?? null);
+      this.store.setLastMessage(data.lastMessage ?? null);
+
+      // Trigger change detection for zoneless mode
+      this.appRef.tick();
 
     } catch (error) {
       this.handleError(error, 'Error al cargar el dashboard');
     } finally {
       this.store.setLoading(false);
+      this.appRef.tick();
     }
   }
 
@@ -151,6 +152,7 @@ export class PatientPortalFacade {
       this.handleError(error, 'Error al cargar el perfil');
     } finally {
       this.store.setLoading(false);
+      this.appRef.tick();
     }
   }
 
@@ -194,6 +196,7 @@ export class PatientPortalFacade {
       this.handleError(error, 'Error al cargar el progreso');
     } finally {
       this.store.setLoading(false);
+      this.appRef.tick();
     }
   }
 
@@ -254,6 +257,7 @@ export class PatientPortalFacade {
       this.handleError(error, 'Error al cargar el plan nutricional');
     } finally {
       this.store.setLoading(false);
+      this.appRef.tick();
     }
   }
 
@@ -282,6 +286,7 @@ export class PatientPortalFacade {
       this.handleError(error, 'Error al cargar las citas');
     } finally {
       this.store.setLoading(false);
+      this.appRef.tick();
     }
   }
 
@@ -328,6 +333,7 @@ export class PatientPortalFacade {
       this.handleError(error, 'Error al cargar los mensajes');
     } finally {
       this.store.setLoading(false);
+      this.appRef.tick();
     }
   }
 
@@ -366,6 +372,7 @@ export class PatientPortalFacade {
       this.handleError(error, 'Error al cargar los documentos');
     } finally {
       this.store.setLoading(false);
+      this.appRef.tick();
     }
   }
 
