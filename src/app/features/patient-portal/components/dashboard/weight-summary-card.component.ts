@@ -77,9 +77,9 @@ import { RouterModule } from '@angular/router';
                   @if (toGoal() > 0) {
                     Faltan {{ toGoal() | number:'1.1-1' }} kg
                   } @else if (toGoal() < 0) {
-                    ¡Meta alcanzada! 🎉
+                    Meta alcanzada
                   } @else {
-                    ¡En tu meta!
+                    En tu meta
                   }
                 </p>
               </div>

@@ -140,11 +140,16 @@ import { WeightEvolutionChartComponent, WeightDataPoint } from '../../components
           <!-- Result -->
           @if (weightLost() !== null) {
             <div class="mt-6 text-center p-4 bg-green-50 dark:bg-green-900/20 rounded-lg">
-              <p class="text-2xl font-bold text-green-600 dark:text-green-400">
-                🎉 {{ weightLost() | number:'1.1-1' }} kg perdidos
-              </p>
-              <p class="text-sm text-green-600 dark:text-green-400 mt-1">
-                ¡Excelente progreso!
+              <div class="flex items-center justify-center gap-2 mb-1">
+                <svg class="w-6 h-6 text-green-600 dark:text-green-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                <p class="text-2xl font-bold text-green-600 dark:text-green-400">
+                  {{ weightLost() | number:'1.1-1' }} kg perdidos
+                </p>
+              </div>
+              <p class="text-sm text-green-600 dark:text-green-400">
+                Excelente progreso
               </p>
             </div>
           }

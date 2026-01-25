@@ -155,7 +155,40 @@ import { MacroDistributionChartComponent, MacroData } from '../../components/cha
                     class="w-full flex items-center justify-between p-4 bg-dark-50 dark:bg-dark-900 hover:bg-dark-100 dark:hover:bg-dark-800 transition-colors"
                   >
                     <div class="flex items-center gap-3">
-                      <span class="text-2xl">{{ getMealIcon(meal.type) }}</span>
+                      <div class="w-10 h-10 rounded-lg flex items-center justify-center" [ngClass]="getMealIconBg(meal.type)">
+                        @switch (meal.type) {
+                          @case ('breakfast') {
+                            <svg class="w-5 h-5" [ngClass]="getMealIconColor(meal.type)" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+                            </svg>
+                          }
+                          @case ('morning_snack') {
+                            <svg class="w-5 h-5" [ngClass]="getMealIconColor(meal.type)" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                          }
+                          @case ('lunch') {
+                            <svg class="w-5 h-5" [ngClass]="getMealIconColor(meal.type)" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+                            </svg>
+                          }
+                          @case ('afternoon_snack') {
+                            <svg class="w-5 h-5" [ngClass]="getMealIconColor(meal.type)" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                          }
+                          @case ('dinner') {
+                            <svg class="w-5 h-5" [ngClass]="getMealIconColor(meal.type)" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+                            </svg>
+                          }
+                          @default {
+                            <svg class="w-5 h-5" [ngClass]="getMealIconColor(meal.type)" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+                            </svg>
+                          }
+                        }
+                      </div>
                       <div class="text-left">
                         <p class="font-medium text-dark-900 dark:text-dark-50">
                           {{ meal.name }}
@@ -319,15 +352,26 @@ export class NutritionPlanComponent implements OnInit {
     return days[day] ?? '';
   }
 
-  getMealIcon(type: MealType): string {
-    const icons: Record<MealType, string> = {
-      'breakfast': '☀️',
-      'morning_snack': '🍎',
-      'lunch': '🍽️',
-      'afternoon_snack': '🍌',
-      'dinner': '🌙'
+  getMealIconBg(type: MealType): string {
+    const backgrounds: Record<MealType, string> = {
+      'breakfast': 'bg-amber-100 dark:bg-amber-900/30',
+      'morning_snack': 'bg-green-100 dark:bg-green-900/30',
+      'lunch': 'bg-primary-100 dark:bg-primary-900/30',
+      'afternoon_snack': 'bg-blue-100 dark:bg-blue-900/30',
+      'dinner': 'bg-indigo-100 dark:bg-indigo-900/30'
     };
-    return icons[type] ?? '🍴';
+    return backgrounds[type] ?? 'bg-dark-100 dark:bg-dark-700';
+  }
+
+  getMealIconColor(type: MealType): string {
+    const colors: Record<MealType, string> = {
+      'breakfast': 'text-amber-600 dark:text-amber-400',
+      'morning_snack': 'text-green-600 dark:text-green-400',
+      'lunch': 'text-primary-600 dark:text-primary-400',
+      'afternoon_snack': 'text-blue-600 dark:text-blue-400',
+      'dinner': 'text-indigo-600 dark:text-indigo-400'
+    };
+    return colors[type] ?? 'text-dark-600 dark:text-dark-400';
   }
 
   toggleMeal(mealId: string): void {

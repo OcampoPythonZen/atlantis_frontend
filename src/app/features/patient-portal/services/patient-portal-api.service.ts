@@ -254,7 +254,7 @@ export class PatientPortalApiService {
         conversationId: '1',
         senderId: '1',
         senderType: 'nutritionist',
-        content: 'Hola María, excelente progreso esta semana. Sigue así 💪',
+        content: 'Hola María, excelente progreso esta semana. Continúa así.',
         sentAt: new Date('2025-01-20T10:30:00'),
         status: 'read'
       },
