@@ -81,14 +81,14 @@ export type TimeRange = '1m' | '3m' | '6m' | '1y' | 'all';
                 [attr.y1]="getYPosition(targetWeight()!)"
                 [attr.x2]="380"
                 [attr.y2]="getYPosition(targetWeight()!)"
-                class="stroke-primary-500"
+                class="stroke-teal-500"
                 stroke-width="1"
                 stroke-dasharray="5,5"
               />
               <text
                 [attr.x]="385"
                 [attr.y]="getYPosition(targetWeight()!) + 3"
-                class="fill-primary-500 text-[9px]"
+                class="fill-teal-500 text-[9px]"
               >
                 Meta
               </text>
@@ -97,8 +97,8 @@ export type TimeRange = '1m' | '3m' | '6m' | '1y' | 'all';
             <!-- Gradient definition -->
             <defs>
               <linearGradient id="weightGradient" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0%" stop-color="#C8A228" stop-opacity="0.4"/>
-                <stop offset="100%" stop-color="#C8A228" stop-opacity="0.05"/>
+                <stop offset="0%" stop-color="#3D9488" stop-opacity="0.4"/>
+                <stop offset="100%" stop-color="#3D9488" stop-opacity="0.05"/>
               </linearGradient>
             </defs>
 
@@ -112,7 +112,7 @@ export type TimeRange = '1m' | '3m' | '6m' | '1y' | 'all';
             <path
               [attr.d]="linePath()"
               fill="none"
-              class="stroke-primary-500"
+              class="stroke-teal-500"
               stroke-width="2"
               stroke-linecap="round"
               stroke-linejoin="round"
@@ -124,7 +124,7 @@ export type TimeRange = '1m' | '3m' | '6m' | '1y' | 'all';
                 [attr.cx]="point.x"
                 [attr.cy]="point.y"
                 r="4"
-                class="fill-primary-500 stroke-white dark:stroke-dark-900"
+                class="fill-teal-500 stroke-white dark:stroke-dark-900"
                 stroke-width="2"
               />
             }

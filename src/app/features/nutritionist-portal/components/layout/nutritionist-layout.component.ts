@@ -24,9 +24,9 @@ import { NutritionistPortalFacade } from '../../facades/nutritionist-portal.faca
         class="
           sr-only focus:not-sr-only
           focus:absolute focus:top-4 focus:left-4 focus:z-50
-          bg-primary-500 text-dark-950
+          bg-navy-800 text-white
           px-4 py-2 rounded-lg font-medium
-          focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500
+          focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-navy-500
         "
       >
         Saltar al contenido principal

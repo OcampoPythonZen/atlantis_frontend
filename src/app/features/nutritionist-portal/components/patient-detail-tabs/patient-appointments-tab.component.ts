@@ -18,7 +18,7 @@ type AppointmentFilter = 'all' | 'upcoming' | 'past';
               (click)="activeFilter.set(filter.value)"
               class="px-4 py-2 text-sm font-medium rounded-lg transition-colors"
               [class]="activeFilter() === filter.value
-                ? 'bg-primary-500 text-dark-950'
+                ? 'bg-teal-500 text-white'
                 : 'bg-dark-100 dark:bg-dark-800 text-dark-600 dark:text-dark-400 hover:bg-dark-200 dark:hover:bg-dark-700'"
             >
               {{ filter.label }}
@@ -93,7 +93,7 @@ type AppointmentFilter = 'all' | 'upcoming' | 'past';
                 <!-- Actions -->
                 <div class="flex items-center gap-2">
                   @if (isUpcoming(appointment)) {
-                    <button class="p-2 text-dark-500 hover:text-primary-600 hover:bg-primary-50 dark:hover:bg-primary-900/20 rounded-lg transition-colors">
+                    <button class="p-2 text-dark-500 hover:text-navy-600 hover:bg-navy-50 dark:hover:bg-navy-900/20 rounded-lg transition-colors">
                       <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
                       </svg>

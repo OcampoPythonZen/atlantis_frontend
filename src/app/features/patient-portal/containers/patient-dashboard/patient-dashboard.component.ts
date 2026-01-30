@@ -99,10 +99,10 @@ import { NutritionistMessageCardComponent } from '../../components/dashboard/nut
           <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
             <a
               routerLink="/patient/progress"
-              class="flex flex-col items-center gap-2 p-4 rounded-lg bg-primary-50 dark:bg-primary-900/20 hover:bg-primary-100 dark:hover:bg-primary-900/30 transition-colors"
+              class="flex flex-col items-center gap-2 p-4 rounded-lg bg-teal-50 dark:bg-teal-900/20 hover:bg-teal-100 dark:hover:bg-teal-900/30 transition-colors"
             >
-              <div class="w-10 h-10 bg-primary-500/20 rounded-lg flex items-center justify-center">
-                <svg class="w-5 h-5 text-primary-600 dark:text-primary-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <div class="w-10 h-10 bg-teal-500/20 rounded-lg flex items-center justify-center">
+                <svg class="w-5 h-5 text-teal-600 dark:text-teal-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
                 </svg>
               </div>
@@ -123,10 +123,10 @@ import { NutritionistMessageCardComponent } from '../../components/dashboard/nut
 
             <a
               routerLink="/patient/messages"
-              class="flex flex-col items-center gap-2 p-4 rounded-lg bg-blue-50 dark:bg-blue-900/20 hover:bg-blue-100 dark:hover:bg-blue-900/30 transition-colors"
+              class="flex flex-col items-center gap-2 p-4 rounded-lg bg-navy-50 dark:bg-navy-900/20 hover:bg-navy-100 dark:hover:bg-navy-900/30 transition-colors"
             >
-              <div class="w-10 h-10 bg-blue-500/20 rounded-lg flex items-center justify-center">
-                <svg class="w-5 h-5 text-blue-600 dark:text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <div class="w-10 h-10 bg-navy-500/20 rounded-lg flex items-center justify-center">
+                <svg class="w-5 h-5 text-navy-600 dark:text-navy-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
                 </svg>
               </div>
@@ -135,10 +135,10 @@ import { NutritionistMessageCardComponent } from '../../components/dashboard/nut
 
             <a
               routerLink="/patient/appointments"
-              class="flex flex-col items-center gap-2 p-4 rounded-lg bg-purple-50 dark:bg-purple-900/20 hover:bg-purple-100 dark:hover:bg-purple-900/30 transition-colors"
+              class="flex flex-col items-center gap-2 p-4 rounded-lg bg-navy-50 dark:bg-navy-900/20 hover:bg-navy-100 dark:hover:bg-navy-900/30 transition-colors"
             >
-              <div class="w-10 h-10 bg-purple-500/20 rounded-lg flex items-center justify-center">
-                <svg class="w-5 h-5 text-purple-600 dark:text-purple-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <div class="w-10 h-10 bg-navy-500/20 rounded-lg flex items-center justify-center">
+                <svg class="w-5 h-5 text-navy-600 dark:text-navy-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
                 </svg>
               </div>

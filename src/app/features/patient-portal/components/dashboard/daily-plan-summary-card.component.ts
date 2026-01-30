@@ -43,14 +43,14 @@ import { RouterModule } from '@angular/router';
         <!-- Macros -->
         <div class="grid grid-cols-3 gap-3">
           <!-- Protein -->
-          <div class="text-center p-3 bg-purple-50 dark:bg-purple-900/20 rounded-lg">
-            <div class="w-8 h-8 mx-auto mb-1 bg-purple-500/20 rounded-full flex items-center justify-center">
-              <svg class="w-4 h-4 text-purple-600 dark:text-purple-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <div class="text-center p-3 bg-teal-50 dark:bg-teal-900/20 rounded-lg">
+            <div class="w-8 h-8 mx-auto mb-1 bg-teal-500/20 rounded-full flex items-center justify-center">
+              <svg class="w-4 h-4 text-teal-600 dark:text-teal-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
               </svg>
             </div>
-            <p class="text-lg font-semibold text-purple-700 dark:text-purple-300">{{ protein() }}g</p>
-            <p class="text-xs text-purple-600 dark:text-purple-400">Proteína</p>
+            <p class="text-lg font-semibold text-teal-700 dark:text-teal-300">{{ protein() }}g</p>
+            <p class="text-xs text-teal-600 dark:text-teal-400">Proteína</p>
           </div>
 
           <!-- Carbs -->
@@ -65,14 +65,14 @@ import { RouterModule } from '@angular/router';
           </div>
 
           <!-- Fat -->
-          <div class="text-center p-3 bg-pink-50 dark:bg-pink-900/20 rounded-lg">
-            <div class="w-8 h-8 mx-auto mb-1 bg-pink-500/20 rounded-full flex items-center justify-center">
-              <svg class="w-4 h-4 text-pink-600 dark:text-pink-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <div class="text-center p-3 bg-navy-50 dark:bg-navy-900/20 rounded-lg">
+            <div class="w-8 h-8 mx-auto mb-1 bg-navy-500/20 rounded-full flex items-center justify-center">
+              <svg class="w-4 h-4 text-navy-600 dark:text-navy-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
               </svg>
             </div>
-            <p class="text-lg font-semibold text-pink-700 dark:text-pink-300">{{ fat() }}g</p>
-            <p class="text-xs text-pink-600 dark:text-pink-400">Grasas</p>
+            <p class="text-lg font-semibold text-navy-700 dark:text-navy-300">{{ fat() }}g</p>
+            <p class="text-xs text-navy-600 dark:text-navy-400">Grasas</p>
           </div>
         </div>
       } @else {
@@ -95,7 +95,7 @@ import { RouterModule } from '@angular/router';
       <footer class="mt-auto pt-4 border-t border-dark-200 dark:border-dark-700">
         <a
           routerLink="/patient/plan"
-          class="text-sm text-primary-600 dark:text-primary-400 hover:text-primary-700 dark:hover:text-primary-300 font-medium flex items-center gap-1"
+          class="text-sm text-teal-600 dark:text-teal-400 hover:text-teal-700 dark:hover:text-teal-300 font-medium flex items-center gap-1"
         >
           Ver plan completo
           <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">

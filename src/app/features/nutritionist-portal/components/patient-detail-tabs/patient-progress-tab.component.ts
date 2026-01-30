@@ -136,7 +136,7 @@ import { PatientComplete, PatientMetrics } from '../../models/nutritionist.model
                     {{ metric.weight }}
                   </span>
                   <div
-                    class="w-full bg-primary-500 rounded-t transition-all hover:bg-primary-600"
+                    class="w-full bg-teal-500 rounded-t transition-all hover:bg-teal-600"
                     [style.height.%]="getBarHeight(metric.weight)"
                     [title]="metric.weight + ' kg - ' + formatDate(metric.date)"
                   ></div>
@@ -167,10 +167,10 @@ import { PatientComplete, PatientMetrics } from '../../models/nutritionist.model
         </div>
 
         <!-- Add New Measurement -->
-        <div class="bg-primary-50 dark:bg-primary-900/20 rounded-xl p-6 border border-primary-200 dark:border-primary-800">
+        <div class="bg-teal-50 dark:bg-teal-900/20 rounded-xl p-6 border border-teal-200 dark:border-teal-800">
           <div class="flex items-start gap-4">
-            <div class="w-10 h-10 bg-primary-500 rounded-lg flex items-center justify-center flex-shrink-0">
-              <svg class="w-5 h-5 text-dark-950" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <div class="w-10 h-10 bg-teal-500 rounded-lg flex items-center justify-center flex-shrink-0">
+              <svg class="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
               </svg>
             </div>

@@ -76,7 +76,7 @@ import { PatientComplete } from '../../models/nutritionist.model';
         <div>
           <div class="flex items-center justify-between mb-4">
             <h4 class="text-sm font-medium text-dark-700 dark:text-dark-300">Menú Semanal</h4>
-            <button class="text-sm text-primary-600 dark:text-primary-400 hover:text-primary-700 dark:hover:text-primary-300 font-medium">
+            <button class="text-sm text-teal-600 dark:text-teal-400 hover:text-teal-700 dark:hover:text-teal-300 font-medium">
               Ver Completo
             </button>
           </div>

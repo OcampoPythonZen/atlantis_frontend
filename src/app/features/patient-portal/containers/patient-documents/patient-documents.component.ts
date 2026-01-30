@@ -98,8 +98,8 @@ import { DocumentType } from '../../models/patient.model';
                   class="
                     flex items-center gap-1 px-3 py-1.5
                     text-sm font-medium
-                    text-primary-600 dark:text-primary-400
-                    hover:bg-primary-50 dark:hover:bg-primary-900/20
+                    text-navy-600 dark:text-navy-400
+                    hover:bg-navy-50 dark:hover:bg-navy-900/20
                     rounded-lg transition-colors
                   "
                 >

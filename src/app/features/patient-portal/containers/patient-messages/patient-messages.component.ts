@@ -23,7 +23,7 @@ import { PatientPortalFacade } from '../../facades/patient-portal.facade';
         <!-- Loading state -->
         <div class="flex-1 flex items-center justify-center">
           <div class="text-center">
-            <div class="w-8 h-8 border-2 border-primary-500 border-t-transparent rounded-full animate-spin mx-auto mb-2"></div>
+            <div class="w-8 h-8 border-2 border-teal-500 border-t-transparent rounded-full animate-spin mx-auto mb-2"></div>
             <p class="text-dark-500">Cargando mensajes...</p>
           </div>
         </div>
@@ -35,7 +35,7 @@ import { PatientPortalFacade } from '../../facades/patient-portal.facade';
             <div class="px-3 sm:px-4 py-2.5 sm:py-3 border-b border-dark-200 dark:border-dark-700 flex items-center justify-between flex-shrink-0">
               <div class="flex items-center gap-2 sm:gap-3 min-w-0">
                 <div class="relative flex-shrink-0">
-                  <div class="w-9 h-9 sm:w-10 sm:h-10 bg-primary-100 dark:bg-primary-900/30 rounded-full flex items-center justify-center">
+                  <div class="w-9 h-9 sm:w-10 sm:h-10 bg-teal-100 dark:bg-teal-900/30 rounded-full flex items-center justify-center">
                     @if (conversation()!.nutritionistPhotoUrl) {
                       <img
                         [src]="conversation()!.nutritionistPhotoUrl"
@@ -43,7 +43,7 @@ import { PatientPortalFacade } from '../../facades/patient-portal.facade';
                         class="w-9 h-9 sm:w-10 sm:h-10 rounded-full object-cover"
                       />
                     } @else {
-                      <span class="text-xs sm:text-sm font-semibold text-primary-600 dark:text-primary-400">
+                      <span class="text-xs sm:text-sm font-semibold text-teal-600 dark:text-teal-400">
                         {{ getInitials(conversation()!.nutritionistName) }}
                       </span>
                     }
@@ -87,7 +87,7 @@ import { PatientPortalFacade } from '../../facades/patient-portal.facade';
                 <div
                   class="max-w-[85%] sm:max-w-[70%] rounded-2xl px-3 sm:px-4 py-2 sm:py-2.5"
                   [class]="message.senderType === 'patient'
-                    ? 'bg-primary-500 text-dark-950 rounded-br-md'
+                    ? 'bg-navy-700 text-white dark:bg-navy-600 rounded-br-md'
                     : 'bg-white dark:bg-dark-800 text-dark-900 dark:text-dark-50 border border-dark-200 dark:border-dark-700 rounded-bl-md'"
                 >
                   <p class="text-sm whitespace-pre-wrap">{{ message.content }}</p>
@@ -95,7 +95,7 @@ import { PatientPortalFacade } from '../../facades/patient-portal.facade';
                     <span
                       class="text-xs"
                       [class]="message.senderType === 'patient'
-                        ? 'text-dark-800'
+                        ? 'text-navy-200'
                         : 'text-dark-500 dark:text-dark-400'"
                     >
                       {{ message.sentAt | date:'HH:mm' }}
@@ -165,7 +165,7 @@ import { PatientPortalFacade } from '../../facades/patient-portal.facade';
                   (keydown.enter)="onEnterKey($event)"
                   rows="1"
                   placeholder="Escribe un mensaje..."
-                  class="w-full px-3 sm:px-4 py-2 sm:py-2.5 rounded-xl border border-dark-200 dark:border-dark-700 bg-dark-50 dark:bg-dark-900 text-dark-900 dark:text-dark-50 placeholder-dark-400 resize-none focus:ring-2 focus:ring-primary-500 focus:border-transparent text-sm"
+                  class="w-full px-3 sm:px-4 py-2 sm:py-2.5 rounded-xl border border-dark-200 dark:border-dark-700 bg-dark-50 dark:bg-dark-900 text-dark-900 dark:text-dark-50 placeholder-dark-400 resize-none focus:ring-2 focus:ring-teal-500 focus:border-transparent text-sm"
                   [disabled]="isSending()">
                 </textarea>
               </div>

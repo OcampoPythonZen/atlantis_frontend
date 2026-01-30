@@ -26,8 +26,8 @@ import { PatientSummary, PatientFilterStatus } from '../../models/nutritionist.m
         <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
           <div class="bg-white dark:bg-dark-800 rounded-xl border border-dark-200 dark:border-dark-700 p-4">
             <div class="flex items-center gap-3">
-              <div class="w-10 h-10 bg-primary-100 dark:bg-primary-900/30 rounded-lg flex items-center justify-center">
-                <svg class="w-5 h-5 text-primary-600 dark:text-primary-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+              <div class="w-10 h-10 bg-navy-100 dark:bg-navy-900/30 rounded-lg flex items-center justify-center">
+                <svg class="w-5 h-5 text-navy-600 dark:text-navy-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z" />
                 </svg>
               </div>
@@ -105,7 +105,7 @@ import { PatientSummary, PatientFilterStatus } from '../../models/nutritionist.m
                   rounded-lg
                   text-dark-900 dark:text-dark-50
                   placeholder-dark-400
-                  focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent
+                  focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent
                 "
               />
             </div>
@@ -117,8 +117,8 @@ import { PatientSummary, PatientFilterStatus } from '../../models/nutritionist.m
               (click)="onStatusFilter('all')"
               [attr.aria-pressed]="statusFilter === 'all'"
               class="px-4 py-2 rounded-lg text-sm font-medium transition-colors"
-              [class.bg-primary-500]="statusFilter === 'all'"
-              [class.text-dark-950]="statusFilter === 'all'"
+              [class.bg-teal-500]="statusFilter === 'all'"
+              [class.text-white]="statusFilter === 'all'"
               [class.bg-dark-100]="statusFilter !== 'all'"
               [class.dark:bg-dark-700]="statusFilter !== 'all'"
               [class.text-dark-600]="statusFilter !== 'all'"
@@ -222,8 +222,8 @@ import { PatientSummary, PatientFilterStatus } from '../../models/nutritionist.m
                 <div class="flex items-center gap-3">
                   <!-- Avatar -->
                   <div class="w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0"
-                    [class.bg-primary-100]="patient.status === 'active'"
-                    [class.dark:bg-primary-900/30]="patient.status === 'active'"
+                    [class.bg-teal-100]="patient.status === 'active'"
+                    [class.dark:bg-teal-900/30]="patient.status === 'active'"
                     [class.bg-dark-200]="patient.status === 'inactive'"
                     [class.dark:bg-dark-700]="patient.status === 'inactive'"
                   >
@@ -235,8 +235,8 @@ import { PatientSummary, PatientFilterStatus } from '../../models/nutritionist.m
                       />
                     } @else {
                       <span class="text-sm font-semibold"
-                        [class.text-primary-600]="patient.status === 'active'"
-                        [class.dark:text-primary-400]="patient.status === 'active'"
+                        [class.text-teal-600]="patient.status === 'active'"
+                        [class.dark:text-teal-400]="patient.status === 'active'"
                         [class.text-dark-500]="patient.status === 'inactive'"
                       >
                         {{ getInitials(patient.fullName) }}
@@ -304,7 +304,7 @@ import { PatientSummary, PatientFilterStatus } from '../../models/nutritionist.m
                     [attr.aria-labelledby]="'progress-label-' + patient.id"
                   >
                     <div
-                      class="h-full bg-gradient-to-r from-primary-400 to-primary-600 rounded-full transition-all duration-300"
+                      class="h-full bg-gradient-to-r from-teal-400 to-teal-500 rounded-full transition-all duration-300"
                       [style.width.%]="patient.progressPercentage"
                     ></div>
                   </div>
@@ -316,7 +316,7 @@ import { PatientSummary, PatientFilterStatus } from '../../models/nutritionist.m
                 <div class="flex items-center gap-1" role="group" [attr.aria-label]="'Acciones rápidas para ' + patient.fullName">
                   <button
                     [routerLink]="['/nutritionist/patient', patient.id]"
-                    class="p-2 rounded-lg text-dark-500 hover:text-primary-600 hover:bg-primary-50 dark:hover:bg-primary-900/20 transition-colors"
+                    class="p-2 rounded-lg text-dark-500 hover:text-navy-600 hover:bg-navy-50 dark:hover:bg-navy-900/20 transition-colors"
                     [attr.aria-label]="'Ver perfil de ' + patient.fullName"
                   >
                     <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">

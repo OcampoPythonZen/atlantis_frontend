@@ -32,7 +32,7 @@ import { NutritionistPortalFacade } from '../../facades/nutritionist-portal.faca
           (click)="activeTab = 'my-requests'"
           class="pb-3 px-1 text-sm font-medium border-b-2 transition-colors"
           [class]="activeTab === 'my-requests'
-            ? 'border-primary-500 text-primary-600 dark:text-primary-400'
+            ? 'border-teal-500 text-teal-600 dark:text-teal-400'
             : 'border-transparent text-dark-500 hover:text-dark-700 dark:text-dark-400 dark:hover:text-dark-200'">
           Mis Solicitudes
           @if (facade.myConsultationRequests().length > 0) {
@@ -45,11 +45,11 @@ import { NutritionistPortalFacade } from '../../facades/nutritionist-portal.faca
           (click)="activeTab = 'shared-with-me'"
           class="pb-3 px-1 text-sm font-medium border-b-2 transition-colors"
           [class]="activeTab === 'shared-with-me'
-            ? 'border-primary-500 text-primary-600 dark:text-primary-400'
+            ? 'border-teal-500 text-teal-600 dark:text-teal-400'
             : 'border-transparent text-dark-500 hover:text-dark-700 dark:text-dark-400 dark:hover:text-dark-200'">
           Compartidos Conmigo
           @if (pendingSharedCount > 0) {
-            <span class="ml-2 px-2 py-0.5 text-xs bg-primary-500 text-dark-950 rounded-full">
+            <span class="ml-2 px-2 py-0.5 text-xs bg-teal-500 text-white rounded-full">
               {{ pendingSharedCount }}
             </span>
           }
@@ -58,7 +58,7 @@ import { NutritionistPortalFacade } from '../../facades/nutritionist-portal.faca
 
       @if (facade.isLoading()) {
         <div class="flex items-center justify-center py-12">
-          <div class="animate-spin rounded-full h-8 w-8 border-b-2 border-primary-500"></div>
+          <div class="animate-spin rounded-full h-8 w-8 border-b-2 border-teal-500"></div>
         </div>
       } @else {
         @switch (activeTab) {
@@ -216,7 +216,7 @@ import { NutritionistPortalFacade } from '../../facades/nutritionist-portal.faca
                           <input
                             type="text"
                             placeholder="Escribe una nota sobre este caso..."
-                            class="flex-1 px-4 py-2 rounded-lg border border-dark-200 dark:border-dark-700 bg-white dark:bg-dark-900 text-dark-900 dark:text-dark-50 placeholder-dark-400 focus:ring-2 focus:ring-primary-500 focus:border-transparent">
+                            class="flex-1 px-4 py-2 rounded-lg border border-dark-200 dark:border-dark-700 bg-white dark:bg-dark-900 text-dark-900 dark:text-dark-50 placeholder-dark-400 focus:ring-2 focus:ring-teal-500 focus:border-transparent">
                           <button class="px-4 py-2 bg-primary-500 hover:bg-primary-600 text-dark-950 font-medium rounded-lg transition-colors">
                             Agregar
                           </button>

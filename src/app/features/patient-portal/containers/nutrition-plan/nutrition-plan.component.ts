@@ -130,8 +130,8 @@ import { MacroDistributionChartComponent, MacroData } from '../../components/cha
               @for (day of weekDays; track day.value) {
                 <button
                   (click)="selectedDay.set(day.value)"
-                  [class.bg-primary-500]="selectedDay() === day.value"
-                  [class.text-dark-950]="selectedDay() === day.value"
+                  [class.bg-teal-500]="selectedDay() === day.value"
+                  [class.text-white]="selectedDay() === day.value"
                   [class.bg-dark-100]="selectedDay() !== day.value"
                   [class.dark:bg-dark-700]="selectedDay() !== day.value"
                   [class.text-dark-600]="selectedDay() !== day.value"
@@ -199,7 +199,7 @@ import { MacroDistributionChartComponent, MacroData } from '../../components/cha
                       </div>
                     </div>
                     <div class="flex items-center gap-3">
-                      <span class="text-sm font-medium text-primary-600 dark:text-primary-400">
+                      <span class="text-sm font-medium text-teal-600 dark:text-teal-400">
                         {{ meal.totalCalories }} kcal
                       </span>
                       <svg
@@ -221,7 +221,7 @@ import { MacroDistributionChartComponent, MacroData } from '../../components/cha
                         @for (food of meal.foods; track food.id) {
                           <li class="flex items-center justify-between py-2">
                             <div class="flex items-center gap-2">
-                              <span class="w-2 h-2 bg-primary-500 rounded-full"></span>
+                              <span class="w-2 h-2 bg-teal-500 rounded-full"></span>
                               <span class="text-dark-700 dark:text-dark-300">{{ food.name }}</span>
                             </div>
                             <span class="text-sm text-dark-500">{{ food.portion }}</span>
@@ -356,7 +356,7 @@ export class NutritionPlanComponent implements OnInit {
     const backgrounds: Record<MealType, string> = {
       'breakfast': 'bg-amber-100 dark:bg-amber-900/30',
       'morning_snack': 'bg-green-100 dark:bg-green-900/30',
-      'lunch': 'bg-primary-100 dark:bg-primary-900/30',
+      'lunch': 'bg-teal-100 dark:bg-teal-900/30',
       'afternoon_snack': 'bg-blue-100 dark:bg-blue-900/30',
       'dinner': 'bg-indigo-100 dark:bg-indigo-900/30'
     };
@@ -367,7 +367,7 @@ export class NutritionPlanComponent implements OnInit {
     const colors: Record<MealType, string> = {
       'breakfast': 'text-amber-600 dark:text-amber-400',
       'morning_snack': 'text-green-600 dark:text-green-400',
-      'lunch': 'text-primary-600 dark:text-primary-400',
+      'lunch': 'text-teal-600 dark:text-teal-400',
       'afternoon_snack': 'text-blue-600 dark:text-blue-400',
       'dinner': 'text-indigo-600 dark:text-indigo-400'
     };

@@ -19,8 +19,8 @@ import { Appointment } from '../../models/patient.model';
         >
           Próxima cita
         </h2>
-        <div class="w-10 h-10 bg-blue-500/10 dark:bg-blue-500/20 rounded-lg flex items-center justify-center">
-          <svg class="w-5 h-5 text-blue-600 dark:text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <div class="w-10 h-10 bg-navy-500/10 dark:bg-navy-500/20 rounded-lg flex items-center justify-center">
+          <svg class="w-5 h-5 text-navy-600 dark:text-navy-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
           </svg>
         </div>
@@ -31,11 +31,11 @@ import { Appointment } from '../../models/patient.model';
         <div class="space-y-4">
           <!-- Date and time -->
           <div class="flex items-start gap-3">
-            <div class="flex-shrink-0 w-12 h-12 bg-primary-100 dark:bg-primary-900/30 rounded-lg flex flex-col items-center justify-center">
-              <span class="text-xs font-medium text-primary-600 dark:text-primary-400 uppercase">
+            <div class="flex-shrink-0 w-12 h-12 bg-navy-100 dark:bg-navy-900/30 rounded-lg flex flex-col items-center justify-center">
+              <span class="text-xs font-medium text-navy-600 dark:text-navy-400 uppercase">
                 {{ appointment()!.date | date:'EEE':'':'es-MX' }}
               </span>
-              <span class="text-lg font-bold text-primary-700 dark:text-primary-300">
+              <span class="text-lg font-bold text-navy-700 dark:text-navy-300">
                 {{ appointment()!.date | date:'d' }}
               </span>
             </div>
@@ -82,17 +82,17 @@ import { Appointment } from '../../models/patient.model';
 
           <!-- Days until -->
           @if (daysUntil() !== null) {
-            <div class="bg-primary-50 dark:bg-primary-900/20 rounded-lg p-3 text-center">
+            <div class="bg-navy-50 dark:bg-navy-900/20 rounded-lg p-3 text-center">
               @if (daysUntil() === 0) {
-                <p class="text-sm font-semibold text-primary-700 dark:text-primary-300">
+                <p class="text-sm font-semibold text-navy-700 dark:text-navy-300">
                   ¡Tu cita es hoy!
                 </p>
               } @else if (daysUntil() === 1) {
-                <p class="text-sm font-semibold text-primary-700 dark:text-primary-300">
+                <p class="text-sm font-semibold text-navy-700 dark:text-navy-300">
                   Tu cita es mañana
                 </p>
               } @else if (daysUntil()! > 0) {
-                <p class="text-sm font-semibold text-primary-700 dark:text-primary-300">
+                <p class="text-sm font-semibold text-navy-700 dark:text-navy-300">
                   Faltan {{ daysUntil() }} días
                 </p>
               }
@@ -119,7 +119,7 @@ import { Appointment } from '../../models/patient.model';
       <footer class="mt-auto pt-4 border-t border-dark-200 dark:border-dark-700">
         <a
           routerLink="/patient/appointments"
-          class="text-sm text-primary-600 dark:text-primary-400 hover:text-primary-700 dark:hover:text-primary-300 font-medium flex items-center gap-1"
+          class="text-sm text-navy-600 dark:text-navy-400 hover:text-navy-700 dark:hover:text-navy-300 font-medium flex items-center gap-1"
         >
           Ver todas mis citas
           <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">

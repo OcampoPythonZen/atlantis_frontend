@@ -71,7 +71,7 @@ import { NutritionistPortalFacade } from '../../../facades/nutritionist-portal.f
                   border border-dark-200 dark:border-dark-700
                   text-dark-900 dark:text-dark-50
                   placeholder-dark-400
-                  focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent
+                  focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent
                   transition-all
                 "
                 [class.border-red-500]="isFieldInvalid('fullName')"
@@ -99,7 +99,7 @@ import { NutritionistPortalFacade } from '../../../facades/nutritionist-portal.f
                     border border-dark-200 dark:border-dark-700
                     text-dark-900 dark:text-dark-50
                     placeholder-dark-400
-                    focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent
+                    focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent
                     transition-all
                   "
                   [class.border-red-500]="isFieldInvalid('email')"
@@ -131,7 +131,7 @@ import { NutritionistPortalFacade } from '../../../facades/nutritionist-portal.f
                     border border-dark-200 dark:border-dark-700
                     text-dark-900 dark:text-dark-50
                     placeholder-dark-400
-                    focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent
+                    focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent
                     transition-all
                   "
                   [class.border-red-500]="isFieldInvalid('phone')"
@@ -158,7 +158,7 @@ import { NutritionistPortalFacade } from '../../../facades/nutritionist-portal.f
                     bg-dark-50 dark:bg-dark-900
                     border border-dark-200 dark:border-dark-700
                     text-dark-900 dark:text-dark-50
-                    focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent
+                    focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent
                     transition-all
                   "
                   [class.border-red-500]="isFieldInvalid('birthDate')"
@@ -181,7 +181,7 @@ import { NutritionistPortalFacade } from '../../../facades/nutritionist-portal.f
                     bg-dark-50 dark:bg-dark-900
                     border border-dark-200 dark:border-dark-700
                     text-dark-900 dark:text-dark-50
-                    focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent
+                    focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent
                     transition-all appearance-none
                   "
                   [class.border-red-500]="isFieldInvalid('gender')"
@@ -202,7 +202,7 @@ import { NutritionistPortalFacade } from '../../../facades/nutritionist-portal.f
               <button
                 type="button"
                 (click)="showOptionalFields.set(!showOptionalFields())"
-                class="flex items-center gap-2 text-sm font-medium text-primary-600 dark:text-primary-400 hover:text-primary-700 dark:hover:text-primary-300 transition-colors"
+                class="flex items-center gap-2 text-sm font-medium text-teal-600 dark:text-teal-400 hover:text-teal-700 dark:hover:text-teal-300 transition-colors"
               >
                 <svg
                   class="w-4 h-4 transition-transform"
@@ -239,7 +239,7 @@ import { NutritionistPortalFacade } from '../../../facades/nutritionist-portal.f
                         border border-dark-200 dark:border-dark-700
                         text-dark-900 dark:text-dark-50
                         placeholder-dark-400
-                        focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent
+                        focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent
                         transition-all
                       "
                     />
@@ -261,7 +261,7 @@ import { NutritionistPortalFacade } from '../../../facades/nutritionist-portal.f
                         border border-dark-200 dark:border-dark-700
                         text-dark-900 dark:text-dark-50
                         placeholder-dark-400
-                        focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent
+                        focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent
                         transition-all
                       "
                     />
@@ -285,7 +285,7 @@ import { NutritionistPortalFacade } from '../../../facades/nutritionist-portal.f
                       border border-dark-200 dark:border-dark-700
                       text-dark-900 dark:text-dark-50
                       placeholder-dark-400
-                      focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent
+                      focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent
                       transition-all
                     "
                   />
@@ -307,7 +307,7 @@ import { NutritionistPortalFacade } from '../../../facades/nutritionist-portal.f
                       border border-dark-200 dark:border-dark-700
                       text-dark-900 dark:text-dark-50
                       placeholder-dark-400
-                      focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent
+                      focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent
                       transition-all resize-none
                     "
                   ></textarea>

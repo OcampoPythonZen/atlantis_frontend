@@ -18,8 +18,8 @@ import { RouterModule } from '@angular/router';
         >
           Mensaje de tu nutriólogo
         </h2>
-        <div class="w-10 h-10 bg-purple-500/10 dark:bg-purple-500/20 rounded-lg flex items-center justify-center">
-          <svg class="w-5 h-5 text-purple-600 dark:text-purple-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <div class="w-10 h-10 bg-navy-500/10 dark:bg-navy-500/20 rounded-lg flex items-center justify-center">
+          <svg class="w-5 h-5 text-navy-600 dark:text-navy-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
           </svg>
         </div>
@@ -30,8 +30,8 @@ import { RouterModule } from '@angular/router';
         <div class="space-y-4">
           <!-- Nutritionist info -->
           <div class="flex items-center gap-3">
-            <div class="w-10 h-10 bg-primary-100 dark:bg-primary-900/30 rounded-full flex items-center justify-center">
-              <span class="text-sm font-semibold text-primary-600 dark:text-primary-400">
+            <div class="w-10 h-10 bg-teal-100 dark:bg-teal-900/30 rounded-full flex items-center justify-center">
+              <span class="text-sm font-semibold text-teal-600 dark:text-teal-400">
                 {{ nutritionistInitials() }}
               </span>
             </div>
@@ -69,7 +69,7 @@ import { RouterModule } from '@angular/router';
       <footer class="mt-auto pt-4 border-t border-dark-200 dark:border-dark-700">
         <a
           routerLink="/patient/messages"
-          class="text-sm text-primary-600 dark:text-primary-400 hover:text-primary-700 dark:hover:text-primary-300 font-medium flex items-center gap-1"
+          class="text-sm text-navy-600 dark:text-navy-400 hover:text-navy-700 dark:hover:text-navy-300 font-medium flex items-center gap-1"
         >
           Ver todos los mensajes
           <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">

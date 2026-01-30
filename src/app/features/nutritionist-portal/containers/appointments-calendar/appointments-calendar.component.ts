@@ -28,7 +28,7 @@ import { NutritionistPortalFacade } from '../../facades/nutritionist-portal.faca
 
       @if (facade.isLoading()) {
         <div class="flex items-center justify-center py-12">
-          <div class="animate-spin rounded-full h-8 w-8 border-b-2 border-primary-500"></div>
+          <div class="animate-spin rounded-full h-8 w-8 border-b-2 border-teal-500"></div>
         </div>
       } @else {
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
@@ -48,7 +48,7 @@ import { NutritionistPortalFacade } from '../../facades/nutritionist-portal.faca
                 </button>
                 <button
                   (click)="goToToday()"
-                  class="px-3 py-1 text-sm font-medium text-primary-600 dark:text-primary-400 hover:bg-primary-50 dark:hover:bg-primary-900/20 rounded-lg transition-colors">
+                  class="px-3 py-1 text-sm font-medium text-teal-600 dark:text-teal-400 hover:bg-teal-50 dark:hover:bg-teal-900/20 rounded-lg transition-colors">
                   Hoy
                 </button>
                 <button
@@ -78,7 +78,7 @@ import { NutritionistPortalFacade } from '../../facades/nutritionist-portal.faca
                   [class]="getDayClasses(day)">
                   <span>{{ day?.getDate() }}</span>
                   @if (hasAppointments(day)) {
-                    <span class="absolute bottom-1 left-1/2 -translate-x-1/2 w-1.5 h-1.5 bg-primary-500 rounded-full"></span>
+                    <span class="absolute bottom-1 left-1/2 -translate-x-1/2 w-1.5 h-1.5 bg-teal-500 rounded-full"></span>
                   }
                 </button>
               }
@@ -218,10 +218,10 @@ export class AppointmentsCalendarComponent implements OnInit {
     const isSelected = day.toDateString() === this.selectedDate.toDateString();
 
     if (isSelected) {
-      return 'bg-primary-500 text-dark-950 font-medium';
+      return 'bg-teal-500 text-white font-medium';
     }
     if (isToday) {
-      return 'bg-primary-100 dark:bg-primary-900/30 text-primary-700 dark:text-primary-400 font-medium';
+      return 'bg-teal-100 dark:bg-teal-900/30 text-teal-700 dark:text-teal-400 font-medium';
     }
     return 'hover:bg-dark-100 dark:hover:bg-dark-700 text-dark-900 dark:text-dark-50';
   }

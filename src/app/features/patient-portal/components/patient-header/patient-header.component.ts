@@ -28,7 +28,7 @@ import { RouterModule } from '@angular/router';
             p-2 rounded-lg
             text-dark-600 dark:text-dark-400
             hover:bg-dark-100 dark:hover:bg-dark-700
-            focus:outline-none focus:ring-2 focus:ring-primary-500
+            focus:outline-none focus:ring-2 focus:ring-teal-500
           "
           (click)="toggleSidebar.emit()"
           aria-label="Abrir menú"
@@ -58,7 +58,7 @@ import { RouterModule } from '@angular/router';
             relative p-2 rounded-lg
             text-dark-600 dark:text-dark-400
             hover:bg-dark-100 dark:hover:bg-dark-700
-            focus:outline-none focus:ring-2 focus:ring-primary-500
+            focus:outline-none focus:ring-2 focus:ring-teal-500
           "
           aria-label="Notificaciones"
         >
@@ -87,13 +87,13 @@ import { RouterModule } from '@angular/router';
               flex items-center gap-2 p-2 rounded-lg
               text-dark-600 dark:text-dark-400
               hover:bg-dark-100 dark:hover:bg-dark-700
-              focus:outline-none focus:ring-2 focus:ring-primary-500
+              focus:outline-none focus:ring-2 focus:ring-teal-500
             "
             (click)="toggleUserMenu()"
             aria-haspopup="true"
             [attr.aria-expanded]="isUserMenuOpen"
           >
-            <div class="w-8 h-8 rounded-full bg-primary-100 dark:bg-primary-900/30 flex items-center justify-center">
+            <div class="w-8 h-8 rounded-full bg-teal-100 dark:bg-teal-900/30 flex items-center justify-center">
               @if (patientPhotoUrl()) {
                 <img
                   [src]="patientPhotoUrl()"
@@ -101,7 +101,7 @@ import { RouterModule } from '@angular/router';
                   class="w-8 h-8 rounded-full object-cover"
                 />
               } @else {
-                <span class="text-xs font-semibold text-primary-600 dark:text-primary-400">
+                <span class="text-xs font-semibold text-teal-600 dark:text-teal-400">
                   {{ patientInitials() }}
                 </span>
               }

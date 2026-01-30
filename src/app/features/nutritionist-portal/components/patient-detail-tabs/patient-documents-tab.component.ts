@@ -19,7 +19,7 @@ type DocumentFilter = 'all' | 'lab' | 'prescription' | 'plan' | 'other';
               (click)="activeFilter.set(filter.value)"
               class="px-3 py-1.5 text-sm font-medium rounded-lg transition-colors whitespace-nowrap"
               [class]="activeFilter() === filter.value
-                ? 'bg-primary-500 text-dark-950'
+                ? 'bg-teal-500 text-white'
                 : 'bg-dark-100 dark:bg-dark-800 text-dark-600 dark:text-dark-400 hover:bg-dark-200 dark:hover:bg-dark-700'"
             >
               {{ filter.label }}
@@ -65,7 +65,7 @@ type DocumentFilter = 'all' | 'lab' | 'prescription' | 'plan' | 'other';
 
               <!-- Actions -->
               <div class="flex items-center justify-end gap-2 mt-4 pt-3 border-t border-dark-200 dark:border-dark-700">
-                <button class="p-2 text-dark-500 hover:text-primary-600 hover:bg-primary-50 dark:hover:bg-primary-900/20 rounded-lg transition-colors">
+                <button class="p-2 text-dark-500 hover:text-navy-600 hover:bg-navy-50 dark:hover:bg-navy-900/20 rounded-lg transition-colors">
                   <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
@@ -110,7 +110,7 @@ type DocumentFilter = 'all' | 'lab' | 'prescription' | 'plan' | 'other';
         </div>
         <div class="w-full h-2 bg-dark-200 dark:bg-dark-700 rounded-full overflow-hidden">
           <div
-            class="h-full bg-primary-500 rounded-full transition-all"
+            class="h-full bg-teal-500 rounded-full transition-all"
             [style.width.%]="storagePercentage()"
           ></div>
         </div>

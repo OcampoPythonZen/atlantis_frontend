@@ -30,7 +30,7 @@ import { NutritionistPortalFacade } from '../../facades/nutritionist-portal.faca
             <input
               type="text"
               placeholder="Buscar conversacion..."
-              class="w-full pl-9 pr-4 py-2 rounded-lg border border-dark-200 dark:border-dark-700 bg-white dark:bg-dark-900 text-dark-900 dark:text-dark-50 placeholder-dark-400 text-sm focus:ring-2 focus:ring-primary-500 focus:border-transparent">
+              class="w-full pl-9 pr-4 py-2 rounded-lg border border-dark-200 dark:border-dark-700 bg-white dark:bg-dark-900 text-dark-900 dark:text-dark-50 placeholder-dark-400 text-sm focus:ring-2 focus:ring-teal-500 focus:border-transparent">
           </div>
         </div>
 
@@ -38,19 +38,19 @@ import { NutritionistPortalFacade } from '../../facades/nutritionist-portal.faca
         <div class="flex-1 overflow-y-auto">
           @if (facade.isLoading()) {
             <div class="flex items-center justify-center py-8">
-              <div class="animate-spin rounded-full h-6 w-6 border-b-2 border-primary-500"></div>
+              <div class="animate-spin rounded-full h-6 w-6 border-b-2 border-teal-500"></div>
             </div>
           } @else if (facade.conversations().length > 0) {
             @for (conv of facade.conversations(); track conv.id) {
               <button
                 (click)="selectConversation(conv.id)"
                 class="w-full p-4 text-left hover:bg-dark-50 dark:hover:bg-dark-700 transition-colors border-b border-dark-100 dark:border-dark-700"
-                [class.bg-primary-50]="facade.activeConversation()?.id === conv.id"
-                [class.dark:bg-primary-900/20]="facade.activeConversation()?.id === conv.id">
+                [class.bg-teal-50]="facade.activeConversation()?.id === conv.id"
+                [class.dark:bg-teal-900/20]="facade.activeConversation()?.id === conv.id">
                 <div class="flex items-center gap-3">
                   <!-- Avatar with online indicator -->
                   <div class="relative">
-                    <div class="w-10 h-10 rounded-full bg-primary-100 dark:bg-primary-900/30 flex items-center justify-center text-sm font-medium text-primary-600 dark:text-primary-400">
+                    <div class="w-10 h-10 rounded-full bg-teal-100 dark:bg-teal-900/30 flex items-center justify-center text-sm font-medium text-teal-600 dark:text-teal-400">
                       {{ getInitials(conv.participantName) }}
                     </div>
                     <span class="absolute bottom-0 right-0 w-3 h-3 bg-green-500 border-2 border-white dark:border-dark-800 rounded-full"></span>
@@ -73,7 +73,7 @@ import { NutritionistPortalFacade } from '../../facades/nutritionist-portal.faca
                   </div>
 
                   @if (conv.unreadCount > 0) {
-                    <span class="w-5 h-5 flex items-center justify-center text-xs font-medium bg-primary-500 text-dark-950 rounded-full">
+                    <span class="w-5 h-5 flex items-center justify-center text-xs font-medium bg-teal-500 text-white rounded-full">
                       {{ conv.unreadCount }}
                     </span>
                   }
@@ -108,7 +108,7 @@ import { NutritionistPortalFacade } from '../../facades/nutritionist-portal.faca
                 </button>
 
                 <div class="relative">
-                  <div class="w-10 h-10 rounded-full bg-primary-100 dark:bg-primary-900/30 flex items-center justify-center text-sm font-medium text-primary-600 dark:text-primary-400">
+                  <div class="w-10 h-10 rounded-full bg-teal-100 dark:bg-teal-900/30 flex items-center justify-center text-sm font-medium text-teal-600 dark:text-teal-400">
                     {{ getInitials(conversation.participantName) }}
                   </div>
                   <span class="absolute bottom-0 right-0 w-3 h-3 bg-green-500 border-2 border-white dark:border-dark-800 rounded-full"></span>
@@ -146,14 +146,14 @@ import { NutritionistPortalFacade } from '../../facades/nutritionist-portal.faca
                 <div
                   class="max-w-[85%] md:max-w-[70%] rounded-2xl px-4 py-2.5"
                   [class]="message.senderId === 'nutritionist-1'
-                    ? 'bg-primary-500 text-dark-950 rounded-br-md'
+                    ? 'bg-navy-700 text-white dark:bg-navy-600 rounded-br-md'
                     : 'bg-white dark:bg-dark-800 text-dark-900 dark:text-dark-50 border border-dark-200 dark:border-dark-700 rounded-bl-md'">
                   <p class="text-sm whitespace-pre-wrap">{{ message.content }}</p>
                   <div class="flex items-center justify-end gap-1.5 mt-1.5">
                     <span
                       class="text-xs"
                       [class]="message.senderId === 'nutritionist-1'
-                        ? 'text-dark-800'
+                        ? 'text-navy-200'
                         : 'text-dark-500 dark:text-dark-400'">
                       {{ message.timestamp | date:'shortTime' }}
                     </span>
@@ -164,11 +164,11 @@ import { NutritionistPortalFacade } from '../../facades/nutritionist-portal.faca
                           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                         </svg>
                       } @else if (message.status === 'delivered') {
-                        <svg class="w-4 h-4 text-dark-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <svg class="w-4 h-4 text-navy-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                         </svg>
                       } @else {
-                        <svg class="w-4 h-4 text-dark-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <svg class="w-4 h-4 text-navy-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
                         </svg>
                       }
@@ -211,7 +211,7 @@ import { NutritionistPortalFacade } from '../../facades/nutritionist-portal.faca
                   (keydown.enter)="sendMessage($event)"
                   rows="1"
                   placeholder="Escribe un mensaje..."
-                  class="w-full px-4 py-2.5 rounded-xl border border-dark-200 dark:border-dark-700 bg-dark-50 dark:bg-dark-900 text-dark-900 dark:text-dark-50 placeholder-dark-400 resize-none focus:ring-2 focus:ring-primary-500 focus:border-transparent text-sm">
+                  class="w-full px-4 py-2.5 rounded-xl border border-dark-200 dark:border-dark-700 bg-dark-50 dark:bg-dark-900 text-dark-900 dark:text-dark-50 placeholder-dark-400 resize-none focus:ring-2 focus:ring-teal-500 focus:border-transparent text-sm">
                 </textarea>
               </div>
 

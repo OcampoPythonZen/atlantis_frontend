@@ -47,7 +47,7 @@ import { PatientPortalFacade } from '../../facades/patient-portal.facade';
           <div class="lg:col-span-3 bg-white dark:bg-dark-800 rounded-xl border border-dark-200 dark:border-dark-700 p-6">
             <div class="flex items-center gap-6">
               <!-- Avatar -->
-              <div class="w-20 h-20 bg-primary-100 dark:bg-primary-900/30 rounded-full flex items-center justify-center">
+              <div class="w-20 h-20 bg-teal-100 dark:bg-teal-900/30 rounded-full flex items-center justify-center">
                 @if (patient()?.photoUrl) {
                   <img
                     [src]="patient()!.photoUrl"
@@ -55,7 +55,7 @@ import { PatientPortalFacade } from '../../facades/patient-portal.facade';
                     class="w-20 h-20 rounded-full object-cover"
                   />
                 } @else {
-                  <span class="text-2xl font-bold text-primary-600 dark:text-primary-400">
+                  <span class="text-2xl font-bold text-teal-600 dark:text-teal-400">
                     {{ getInitials(patient()?.fullName) }}
                   </span>
                 }
@@ -160,8 +160,8 @@ import { PatientPortalFacade } from '../../facades/patient-portal.facade';
             </h3>
             @if (nutritionist()) {
               <div class="flex items-center gap-4 mb-4">
-                <div class="w-12 h-12 bg-primary-100 dark:bg-primary-900/30 rounded-full flex items-center justify-center">
-                  <span class="text-sm font-semibold text-primary-600 dark:text-primary-400">
+                <div class="w-12 h-12 bg-teal-100 dark:bg-teal-900/30 rounded-full flex items-center justify-center">
+                  <span class="text-sm font-semibold text-teal-600 dark:text-teal-400">
                     {{ getInitials(nutritionist()?.fullName) }}
                   </span>
                 </div>

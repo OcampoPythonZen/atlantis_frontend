@@ -36,7 +36,7 @@ import { Appointment } from '../../models/patient.model';
             Próxima cita
           </h2>
           @if (nextAppointment()) {
-            <div class="bg-gradient-to-br from-primary-500 to-primary-600 rounded-xl p-6 text-dark-950">
+            <div class="bg-gradient-to-br from-navy-700 to-navy-800 rounded-xl p-6 text-white">
               <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
                 <div class="flex items-start gap-4">
                   <!-- Calendar icon -->

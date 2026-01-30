@@ -38,11 +38,11 @@ interface ThemeOption {
               [attr.aria-pressed]="themeService.themeMode() === option.mode"
               class="
                 relative flex flex-col items-center p-4 rounded-xl border-2 transition-all duration-200
-                focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2
+                focus:outline-none focus:ring-2 focus:ring-teal-500 focus:ring-offset-2
                 dark:focus:ring-offset-dark-800
               "
               [class]="themeService.themeMode() === option.mode
-                ? 'border-primary-500 bg-primary-50 dark:bg-primary-900/20'
+                ? 'border-teal-500 bg-teal-50 dark:bg-teal-900/20'
                 : 'border-dark-200 dark:border-dark-700 bg-white dark:bg-dark-800 hover:border-dark-300 dark:hover:border-dark-600'"
             >
               <!-- Theme Preview -->
@@ -75,7 +75,7 @@ interface ThemeOption {
               <div
                 class="w-10 h-10 rounded-full flex items-center justify-center mb-2"
                 [class]="themeService.themeMode() === option.mode
-                  ? 'bg-primary-500 text-dark-950'
+                  ? 'bg-teal-500 text-white'
                   : 'bg-dark-100 dark:bg-dark-700 text-dark-600 dark:text-dark-400'"
               >
                 <span [innerHTML]="option.icon" class="w-5 h-5"></span>
@@ -85,7 +85,7 @@ interface ThemeOption {
               <span
                 class="text-sm font-medium"
                 [class]="themeService.themeMode() === option.mode
-                  ? 'text-primary-700 dark:text-primary-400'
+                  ? 'text-teal-700 dark:text-teal-400'
                   : 'text-dark-700 dark:text-dark-300'"
               >
                 {{ option.label }}
@@ -99,8 +99,8 @@ interface ThemeOption {
               <!-- Selected indicator -->
               @if (themeService.themeMode() === option.mode) {
                 <div class="absolute top-2 right-2">
-                  <div class="w-5 h-5 bg-primary-500 rounded-full flex items-center justify-center">
-                    <svg class="w-3 h-3 text-dark-950" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3">
+                  <div class="w-5 h-5 bg-teal-500 rounded-full flex items-center justify-center">
+                    <svg class="w-3 h-3 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3">
                       <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
                     </svg>
                   </div>
@@ -113,8 +113,8 @@ interface ThemeOption {
 
       <!-- Current theme info -->
       <div class="flex items-center gap-3 p-4 rounded-xl bg-dark-50 dark:bg-dark-900 border border-dark-200 dark:border-dark-700">
-        <div class="w-10 h-10 rounded-full bg-primary-100 dark:bg-primary-900/30 flex items-center justify-center">
-          <svg class="w-5 h-5 text-primary-600 dark:text-primary-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <div class="w-10 h-10 rounded-full bg-navy-100 dark:bg-navy-900/30 flex items-center justify-center">
+          <svg class="w-5 h-5 text-navy-600 dark:text-navy-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
           </svg>
         </div>
@@ -187,6 +187,8 @@ export class AppearanceSettingsComponent {
   }
 
   getAccentClasses(mode: ThemeMode): string {
+    if (mode === 'dark') return 'bg-navy-600';
+    if (mode === 'light') return 'bg-teal-500';
     return 'bg-primary-500';
   }
 

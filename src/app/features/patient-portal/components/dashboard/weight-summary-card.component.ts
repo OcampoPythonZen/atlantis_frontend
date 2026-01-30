@@ -18,8 +18,8 @@ import { RouterModule } from '@angular/router';
         >
           Resumen de peso
         </h2>
-        <div class="w-10 h-10 bg-primary-500/10 dark:bg-primary-500/20 rounded-lg flex items-center justify-center">
-          <svg class="w-5 h-5 text-primary-600 dark:text-primary-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <div class="w-10 h-10 bg-teal-500/10 dark:bg-teal-500/20 rounded-lg flex items-center justify-center">
+          <svg class="w-5 h-5 text-teal-600 dark:text-teal-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3" />
           </svg>
         </div>
@@ -95,7 +95,7 @@ import { RouterModule } from '@angular/router';
               </div>
               <div class="w-full h-2 bg-dark-200 dark:bg-dark-700 rounded-full overflow-hidden">
                 <div
-                  class="h-full bg-gradient-to-r from-primary-400 to-primary-600 rounded-full transition-all duration-500"
+                  class="h-full bg-gradient-to-r from-teal-400 to-teal-500 rounded-full transition-all duration-500"
                   [style.width.%]="progressPercentage()"
                 ></div>
               </div>
@@ -111,7 +111,7 @@ import { RouterModule } from '@angular/router';
       <footer class="mt-auto pt-4 border-t border-dark-200 dark:border-dark-700">
         <a
           routerLink="/patient/progress"
-          class="text-sm text-primary-600 dark:text-primary-400 hover:text-primary-700 dark:hover:text-primary-300 font-medium flex items-center gap-1"
+          class="text-sm text-teal-600 dark:text-teal-400 hover:text-teal-700 dark:hover:text-teal-300 font-medium flex items-center gap-1"
         >
           Ver mi progreso completo
           <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">

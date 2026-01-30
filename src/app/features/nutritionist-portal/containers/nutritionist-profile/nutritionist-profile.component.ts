@@ -19,7 +19,7 @@ import { NutritionistPortalFacade } from '../../facades/nutritionist-portal.faca
 
       @if (facade.isLoading()) {
         <div class="flex items-center justify-center py-12">
-          <div class="animate-spin rounded-full h-8 w-8 border-b-2 border-primary-500"></div>
+          <div class="animate-spin rounded-full h-8 w-8 border-b-2 border-teal-500"></div>
         </div>
       } @else if (facade.nutritionist(); as nutritionist) {
         <div class="space-y-6">
@@ -28,7 +28,7 @@ import { NutritionistPortalFacade } from '../../facades/nutritionist-portal.faca
             <div class="flex items-start gap-6">
               <!-- Avatar -->
               <div class="relative">
-                <div class="w-24 h-24 rounded-full bg-primary-100 dark:bg-primary-900/30 flex items-center justify-center text-3xl font-bold text-primary-600 dark:text-primary-400">
+                <div class="w-24 h-24 rounded-full bg-teal-100 dark:bg-teal-900/30 flex items-center justify-center text-3xl font-bold text-teal-600 dark:text-teal-400">
                   @if (nutritionist.photoUrl) {
                     <img
                       [src]="nutritionist.photoUrl"
@@ -51,7 +51,7 @@ import { NutritionistPortalFacade } from '../../facades/nutritionist-portal.faca
                 <h2 class="text-xl font-bold text-dark-900 dark:text-dark-50">
                   {{ nutritionist.fullName }}
                 </h2>
-                <p class="text-primary-600 dark:text-primary-400 font-medium">
+                <p class="text-teal-600 dark:text-teal-400 font-medium">
                   {{ nutritionist.specialty || 'Nutriólogo' }}
                 </p>
                 <p class="text-dark-500 dark:text-dark-400 mt-1">
@@ -180,7 +180,7 @@ import { NutritionistPortalFacade } from '../../facades/nutritionist-portal.faca
 
             <div class="grid grid-cols-4 gap-6">
               <div class="text-center">
-                <div class="text-3xl font-bold text-primary-500">
+                <div class="text-3xl font-bold text-teal-500">
                   {{ facade.stats()?.totalPatients || 0 }}
                 </div>
                 <div class="text-sm text-dark-500 dark:text-dark-400 mt-1">

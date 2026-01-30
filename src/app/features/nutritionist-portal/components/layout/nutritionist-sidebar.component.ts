@@ -34,8 +34,8 @@ import { RouterModule } from '@angular/router';
       <div class="flex flex-col h-full">
         <!-- Logo and branding -->
         <div class="flex items-center gap-3 px-6 py-5 border-b border-dark-200 dark:border-dark-700">
-          <div class="w-10 h-10 bg-primary-500 rounded-lg flex items-center justify-center">
-            <svg class="w-6 h-6 text-dark-950" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+          <div class="w-10 h-10 bg-navy-800 dark:bg-navy-700 rounded-lg flex items-center justify-center">
+            <svg class="w-6 h-6 text-primary-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
             </svg>
           </div>
@@ -50,7 +50,7 @@ import { RouterModule } from '@angular/router';
         <!-- User info -->
         <div class="px-4 py-4 border-b border-dark-200 dark:border-dark-700">
           <div class="flex items-center gap-3">
-            <div class="w-10 h-10 bg-primary-100 dark:bg-primary-900/30 rounded-full flex items-center justify-center flex-shrink-0">
+            <div class="w-10 h-10 bg-teal-100 dark:bg-teal-900/30 rounded-full flex items-center justify-center flex-shrink-0">
               @if (nutritionistPhotoUrl()) {
                 <img
                   [src]="nutritionistPhotoUrl()"
@@ -58,7 +58,7 @@ import { RouterModule } from '@angular/router';
                   class="w-10 h-10 rounded-full object-cover"
                 />
               } @else {
-                <span class="text-sm font-semibold text-primary-600 dark:text-primary-400">
+                <span class="text-sm font-semibold text-teal-600 dark:text-teal-400">
                   {{ getInitials() }}
                 </span>
               }
@@ -77,7 +77,7 @@ import { RouterModule } from '@angular/router';
           <!-- Dashboard -->
           <a
             routerLink="/nutritionist"
-            routerLinkActive="bg-primary-50 dark:bg-primary-900/20 text-primary-700 dark:text-primary-300"
+            routerLinkActive="bg-teal-50 dark:bg-teal-900/20 text-teal-700 dark:text-teal-300"
             [routerLinkActiveOptions]="{ exact: true }"
             class="
               flex items-center gap-3 px-3 py-2.5 rounded-lg
@@ -96,7 +96,7 @@ import { RouterModule } from '@angular/router';
           <!-- Calendar -->
           <a
             routerLink="/nutritionist/calendar"
-            routerLinkActive="bg-primary-50 dark:bg-primary-900/20 text-primary-700 dark:text-primary-300"
+            routerLinkActive="bg-teal-50 dark:bg-teal-900/20 text-teal-700 dark:text-teal-300"
             class="
               flex items-center gap-3 px-3 py-2.5 rounded-lg
               text-dark-700 dark:text-dark-300
@@ -114,7 +114,7 @@ import { RouterModule } from '@angular/router';
           <!-- Messages -->
           <a
             routerLink="/nutritionist/messages"
-            routerLinkActive="bg-primary-50 dark:bg-primary-900/20 text-primary-700 dark:text-primary-300"
+            routerLinkActive="bg-teal-50 dark:bg-teal-900/20 text-teal-700 dark:text-teal-300"
             class="
               flex items-center justify-between px-3 py-2.5 rounded-lg
               text-dark-700 dark:text-dark-300
@@ -139,7 +139,7 @@ import { RouterModule } from '@angular/router';
           <!-- Consultations -->
           <a
             routerLink="/nutritionist/consultations"
-            routerLinkActive="bg-primary-50 dark:bg-primary-900/20 text-primary-700 dark:text-primary-300"
+            routerLinkActive="bg-teal-50 dark:bg-teal-900/20 text-teal-700 dark:text-teal-300"
             class="
               flex items-center justify-between px-3 py-2.5 rounded-lg
               text-dark-700 dark:text-dark-300
@@ -166,7 +166,7 @@ import { RouterModule } from '@angular/router';
           <!-- Profile -->
           <a
             routerLink="/nutritionist/profile"
-            routerLinkActive="bg-primary-50 dark:bg-primary-900/20 text-primary-700 dark:text-primary-300"
+            routerLinkActive="bg-teal-50 dark:bg-teal-900/20 text-teal-700 dark:text-teal-300"
             class="
               flex items-center gap-3 px-3 py-2.5 rounded-lg
               text-dark-700 dark:text-dark-300
@@ -184,7 +184,7 @@ import { RouterModule } from '@angular/router';
           <!-- Settings -->
           <a
             routerLink="/nutritionist/settings"
-            routerLinkActive="bg-primary-50 dark:bg-primary-900/20 text-primary-700 dark:text-primary-300"
+            routerLinkActive="bg-teal-50 dark:bg-teal-900/20 text-teal-700 dark:text-teal-300"
             class="
               flex items-center gap-3 px-3 py-2.5 rounded-lg
               text-dark-700 dark:text-dark-300

@@ -20,8 +20,8 @@ interface ChatMessage {
       <!-- Chat Header -->
       <div class="flex items-center justify-between px-4 py-3 bg-white dark:bg-dark-800 border-b border-dark-200 dark:border-dark-700">
         <div class="flex items-center gap-3">
-          <div class="w-10 h-10 bg-primary-100 dark:bg-primary-900/30 rounded-full flex items-center justify-center">
-            <span class="text-sm font-semibold text-primary-600 dark:text-primary-400">
+          <div class="w-10 h-10 bg-teal-100 dark:bg-teal-900/30 rounded-full flex items-center justify-center">
+            <span class="text-sm font-semibold text-teal-600 dark:text-teal-400">
               {{ getInitials() }}
             </span>
           </div>
@@ -59,21 +59,21 @@ interface ChatMessage {
             <div
               class="max-w-[70%] rounded-2xl px-4 py-2"
               [class]="message.isFromNutritionist
-                ? 'bg-primary-500 text-dark-950 rounded-br-md'
+                ? 'bg-navy-700 text-white dark:bg-navy-600 rounded-br-md'
                 : 'bg-white dark:bg-dark-800 text-dark-900 dark:text-dark-50 border border-dark-200 dark:border-dark-700 rounded-bl-md'"
             >
               <p class="text-sm">{{ message.content }}</p>
               <div class="flex items-center justify-end gap-1 mt-1">
                 <span
                   class="text-xs"
-                  [class]="message.isFromNutritionist ? 'text-dark-800' : 'text-dark-500'"
+                  [class]="message.isFromNutritionist ? 'text-navy-200' : 'text-dark-500'"
                 >
                   {{ formatTime(message.sentAt) }}
                 </span>
                 @if (message.isFromNutritionist) {
                   <svg
                     class="w-4 h-4"
-                    [class]="message.status === 'read' ? 'text-blue-600' : 'text-dark-700'"
+                    [class]="message.status === 'read' ? 'text-blue-600' : 'text-navy-200'"
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"
@@ -139,7 +139,7 @@ interface ChatMessage {
                 border border-dark-200 dark:border-dark-700
                 text-dark-900 dark:text-dark-50
                 placeholder-dark-400
-                focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent
+                focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent
               "
             ></textarea>
           </div>

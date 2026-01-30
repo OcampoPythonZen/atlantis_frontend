@@ -68,7 +68,7 @@ import { WeightEvolutionChartComponent, WeightDataPoint } from '../../components
           <!-- Goal -->
           <div class="bg-white dark:bg-dark-800 rounded-xl border border-dark-200 dark:border-dark-700 p-6">
             <p class="text-sm text-dark-500 mb-1">Meta</p>
-            <p class="text-3xl font-bold text-primary-600 dark:text-primary-400">
+            <p class="text-3xl font-bold text-teal-600 dark:text-teal-400">
               {{ targetWeight() }}
               <span class="text-lg font-normal text-dark-500">kg</span>
             </p>
@@ -120,20 +120,20 @@ import { WeightEvolutionChartComponent, WeightDataPoint } from '../../components
             <!-- Arrow -->
             <div class="flex justify-center">
               <div class="flex items-center gap-2">
-                <div class="h-0.5 w-8 bg-primary-500"></div>
-                <svg class="w-6 h-6 text-primary-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <div class="h-0.5 w-8 bg-teal-500"></div>
+                <svg class="w-6 h-6 text-teal-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
                 </svg>
               </div>
             </div>
 
             <!-- Current -->
-            <div class="text-center p-4 bg-primary-50 dark:bg-primary-900/20 rounded-lg">
-              <p class="text-sm text-primary-600 dark:text-primary-400 mb-2">ACTUAL</p>
-              <p class="text-3xl font-bold text-primary-700 dark:text-primary-300">
+            <div class="text-center p-4 bg-teal-50 dark:bg-teal-900/20 rounded-lg">
+              <p class="text-sm text-teal-600 dark:text-teal-400 mb-2">ACTUAL</p>
+              <p class="text-3xl font-bold text-teal-700 dark:text-teal-300">
                 {{ currentMetrics()?.weight | number:'1.1-1' }} kg
               </p>
-              <p class="text-xs text-primary-500 mt-1">Enero 2025</p>
+              <p class="text-xs text-teal-500 mt-1">Enero 2025</p>
             </div>
           </div>
 

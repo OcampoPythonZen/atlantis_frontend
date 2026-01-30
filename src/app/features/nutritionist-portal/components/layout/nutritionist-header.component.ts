@@ -108,7 +108,7 @@ import { RouterModule } from '@angular/router';
               aria-label="Menú de usuario"
               (click)="isMenuOpen = !isMenuOpen"
             >
-              <div class="w-7 h-7 sm:w-8 sm:h-8 bg-primary-100 dark:bg-primary-900/30 rounded-full flex items-center justify-center">
+              <div class="w-7 h-7 sm:w-8 sm:h-8 bg-teal-100 dark:bg-teal-900/30 rounded-full flex items-center justify-center">
                 @if (nutritionistPhotoUrl()) {
                   <img
                     [src]="nutritionistPhotoUrl()"
@@ -116,7 +116,7 @@ import { RouterModule } from '@angular/router';
                     class="w-7 h-7 sm:w-8 sm:h-8 rounded-full object-cover"
                   />
                 } @else {
-                  <span class="text-[10px] sm:text-xs font-semibold text-primary-600 dark:text-primary-400">
+                  <span class="text-[10px] sm:text-xs font-semibold text-teal-600 dark:text-teal-400">
                     {{ getInitials() }}
                   </span>
                 }

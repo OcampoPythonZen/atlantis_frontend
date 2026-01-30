@@ -40,8 +40,8 @@ interface NavItem {
       <!-- Logo / Brand -->
       <div class="h-16 flex items-center px-6 border-b border-dark-200 dark:border-dark-700">
         <a routerLink="/patient" class="flex items-center gap-3">
-          <div class="w-10 h-10 bg-primary-500 rounded-lg flex items-center justify-center">
-            <svg class="w-6 h-6 text-dark-950" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <div class="w-10 h-10 bg-navy-800 dark:bg-navy-700 rounded-lg flex items-center justify-center">
+            <svg class="w-6 h-6 text-primary-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
             </svg>
           </div>
@@ -56,7 +56,7 @@ interface NavItem {
         @for (item of navItems; track item.id) {
           <a
             [routerLink]="item.route"
-            routerLinkActive="bg-primary-500/10 text-primary-600 dark:text-primary-400 border-r-2 border-primary-500"
+            routerLinkActive="bg-teal-500/10 text-teal-600 dark:text-teal-400 border-r-2 border-teal-500"
             [routerLinkActiveOptions]="{ exact: item.route === '/patient' }"
             class="
               flex items-center gap-3 px-4 py-3 rounded-lg
@@ -76,7 +76,7 @@ interface NavItem {
             @if (item.badge && item.badge > 0) {
               <span class="
                 px-2 py-0.5 text-xs font-semibold rounded-full
-                bg-primary-500 text-dark-950
+                bg-navy-700 text-white dark:bg-navy-600
               ">
                 {{ item.badge > 99 ? '99+' : item.badge }}
               </span>
@@ -88,7 +88,7 @@ interface NavItem {
       <!-- Footer / User Info -->
       <div class="p-4 border-t border-dark-200 dark:border-dark-700">
         <div class="flex items-center gap-3 px-2">
-          <div class="w-10 h-10 rounded-full bg-primary-100 dark:bg-primary-900/30 flex items-center justify-center">
+          <div class="w-10 h-10 rounded-full bg-teal-100 dark:bg-teal-900/30 flex items-center justify-center">
             @if (patientPhotoUrl()) {
               <img
                 [src]="patientPhotoUrl()"
@@ -96,7 +96,7 @@ interface NavItem {
                 class="w-10 h-10 rounded-full object-cover"
               />
             } @else {
-              <span class="text-sm font-semibold text-primary-600 dark:text-primary-400">
+              <span class="text-sm font-semibold text-teal-600 dark:text-teal-400">
                 {{ patientInitials() }}
               </span>
             }

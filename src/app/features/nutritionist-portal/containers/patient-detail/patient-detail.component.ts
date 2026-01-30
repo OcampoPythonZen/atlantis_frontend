@@ -28,7 +28,7 @@ import { PatientDocumentsTabComponent } from '../../components/patient-detail-ta
       <nav class="mb-2">
         <ol class="flex items-center gap-2 text-sm">
           <li>
-            <a routerLink="/nutritionist" class="text-dark-500 hover:text-primary-500 dark:text-dark-400 transition-colors">
+            <a routerLink="/nutritionist" class="text-dark-500 hover:text-teal-500 dark:text-dark-400 transition-colors">
               Dashboard
             </a>
           </li>
@@ -41,14 +41,14 @@ import { PatientDocumentsTabComponent } from '../../components/patient-detail-ta
 
       @if (facade.isLoading()) {
         <div class="flex items-center justify-center py-12">
-          <div class="animate-spin rounded-full h-8 w-8 border-b-2 border-primary-500"></div>
+          <div class="animate-spin rounded-full h-8 w-8 border-b-2 border-teal-500"></div>
         </div>
       } @else if (facade.selectedPatient(); as patient) {
         <!-- Patient Header -->
         <div class="bg-white dark:bg-dark-800 rounded-xl border border-dark-200 dark:border-dark-700 p-6">
           <div class="flex flex-col lg:flex-row items-start gap-6">
             <!-- Avatar -->
-            <div class="w-20 h-20 lg:w-24 lg:h-24 rounded-full bg-primary-100 dark:bg-primary-900/30 flex items-center justify-center flex-shrink-0">
+            <div class="w-20 h-20 lg:w-24 lg:h-24 rounded-full bg-teal-100 dark:bg-teal-900/30 flex items-center justify-center flex-shrink-0">
               @if (patient.personalInfo.photoUrl) {
                 <img
                   [src]="patient.personalInfo.photoUrl"
@@ -56,7 +56,7 @@ import { PatientDocumentsTabComponent } from '../../components/patient-detail-ta
                   class="w-full h-full rounded-full object-cover"
                 />
               } @else {
-                <span class="text-2xl lg:text-3xl font-bold text-primary-600 dark:text-primary-400">
+                <span class="text-2xl lg:text-3xl font-bold text-teal-600 dark:text-teal-400">
                   {{ getInitials(patient.personalInfo.fullName) }}
                 </span>
               }
@@ -134,40 +134,40 @@ import { PatientDocumentsTabComponent } from '../../components/patient-detail-ta
               aria-haspopup="listbox"
             >
               <span class="flex items-center gap-3">
-                <span class="w-8 h-8 rounded-lg bg-primary-100 dark:bg-primary-900/30 flex items-center justify-center">
+                <span class="w-8 h-8 rounded-lg bg-teal-100 dark:bg-teal-900/30 flex items-center justify-center">
                   @switch (activeTab) {
                     @case ('info') {
-                      <svg class="w-4 h-4 text-primary-600 dark:text-primary-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <svg class="w-4 h-4 text-teal-600 dark:text-teal-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
                       </svg>
                     }
                     @case ('progress') {
-                      <svg class="w-4 h-4 text-primary-600 dark:text-primary-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <svg class="w-4 h-4 text-teal-600 dark:text-teal-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
                       </svg>
                     }
                     @case ('plan') {
-                      <svg class="w-4 h-4 text-primary-600 dark:text-primary-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <svg class="w-4 h-4 text-teal-600 dark:text-teal-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
                       </svg>
                     }
                     @case ('appointments') {
-                      <svg class="w-4 h-4 text-primary-600 dark:text-primary-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <svg class="w-4 h-4 text-teal-600 dark:text-teal-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
                       </svg>
                     }
                     @case ('messages') {
-                      <svg class="w-4 h-4 text-primary-600 dark:text-primary-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <svg class="w-4 h-4 text-teal-600 dark:text-teal-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
                       </svg>
                     }
                     @case ('documents') {
-                      <svg class="w-4 h-4 text-primary-600 dark:text-primary-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <svg class="w-4 h-4 text-teal-600 dark:text-teal-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z" />
                       </svg>
                     }
                     @case ('notes') {
-                      <svg class="w-4 h-4 text-primary-600 dark:text-primary-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <svg class="w-4 h-4 text-teal-600 dark:text-teal-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
                       </svg>
                     }
@@ -210,11 +210,11 @@ import { PatientDocumentsTabComponent } from '../../components/patient-detail-ta
                       transition-colors
                     "
                     [class]="activeTab === tab.id
-                      ? 'bg-primary-50 dark:bg-primary-900/20 text-primary-700 dark:text-primary-400'
+                      ? 'bg-teal-50 dark:bg-teal-900/20 text-teal-700 dark:text-teal-400'
                       : 'text-dark-700 dark:text-dark-300 hover:bg-dark-50 dark:hover:bg-dark-700/50'"
                   >
                     @if (activeTab === tab.id) {
-                      <svg class="w-4 h-4 text-primary-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <svg class="w-4 h-4 text-teal-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
                       </svg>
                     } @else {
@@ -237,7 +237,7 @@ import { PatientDocumentsTabComponent } from '../../components/patient-detail-ta
                   role="tab"
                   class="py-4 px-3 lg:px-4 text-sm font-medium border-b-2 transition-colors whitespace-nowrap"
                   [class]="activeTab === tab.id
-                    ? 'border-primary-500 text-primary-600 dark:text-primary-400'
+                    ? 'border-teal-500 text-teal-600 dark:text-teal-400'
                     : 'border-transparent text-dark-500 hover:text-dark-700 dark:text-dark-400 dark:hover:text-dark-200'">
                   {{ tab.label }}
                 </button>
@@ -252,7 +252,7 @@ import { PatientDocumentsTabComponent } from '../../components/patient-detail-ta
                   <!-- Personal Info -->
                   <div class="bg-dark-50 dark:bg-dark-900 rounded-xl p-5">
                     <h3 class="text-lg font-semibold text-dark-900 dark:text-dark-50 mb-4 flex items-center gap-2">
-                      <svg class="w-5 h-5 text-primary-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <svg class="w-5 h-5 text-navy-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
                       </svg>
                       Información Personal
@@ -291,7 +291,7 @@ import { PatientDocumentsTabComponent } from '../../components/patient-detail-ta
                   <!-- Medical Info -->
                   <div class="bg-dark-50 dark:bg-dark-900 rounded-xl p-5">
                     <h3 class="text-lg font-semibold text-dark-900 dark:text-dark-50 mb-4 flex items-center gap-2">
-                      <svg class="w-5 h-5 text-primary-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <svg class="w-5 h-5 text-navy-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                       </svg>
                       Información Médica
@@ -384,7 +384,7 @@ import { PatientDocumentsTabComponent } from '../../components/patient-detail-ta
                               <span
                                 class="px-2 py-0.5 text-xs rounded-full"
                                 [class]="note.authorRole === 'owner'
-                                  ? 'bg-primary-100 dark:bg-primary-900/30 text-primary-700 dark:text-primary-400'
+                                  ? 'bg-teal-100 dark:bg-teal-900/30 text-teal-700 dark:text-teal-400'
                                   : 'bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400'">
                                 {{ note.authorRole === 'owner' ? 'Titular' : 'Consultor' }}
                               </span>
@@ -430,7 +430,7 @@ import { PatientDocumentsTabComponent } from '../../components/patient-detail-ta
                         bg-dark-50 dark:bg-dark-900
                         text-dark-900 dark:text-dark-50
                         placeholder-dark-400
-                        focus:ring-2 focus:ring-primary-500 focus:border-transparent
+                        focus:ring-2 focus:ring-teal-500 focus:border-transparent
                         resize-none
                       "
                     ></textarea>
@@ -439,7 +439,7 @@ import { PatientDocumentsTabComponent } from '../../components/patient-detail-ta
                         <input
                           type="checkbox"
                           [(ngModel)]="isNotePrivate"
-                          class="rounded border-dark-300 text-primary-500 focus:ring-primary-500"
+                          class="rounded border-dark-300 text-teal-500 focus:ring-teal-500"
                         />
                         Nota privada (solo profesionales)
                       </label>
@@ -470,7 +470,7 @@ import { PatientDocumentsTabComponent } from '../../components/patient-detail-ta
           <p class="text-dark-500 dark:text-dark-400 mb-4">Paciente no encontrado</p>
           <a
             routerLink="/nutritionist"
-            class="inline-flex items-center gap-2 text-primary-500 hover:text-primary-600 font-medium"
+            class="inline-flex items-center gap-2 text-teal-500 hover:text-teal-600 font-medium"
           >
             <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
