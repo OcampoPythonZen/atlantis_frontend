@@ -23,6 +23,7 @@ import {
   NutritionPlan,
   DocumentFile
 } from '../models/nutritionist.model';
+import { ClinicalHistory, ClinicalSectionStatus } from '../models/clinical-history.model';
 
 /**
  * Mock API Service for Nutritionist Portal
@@ -234,6 +235,18 @@ export class NutritionistPortalApiService {
   }
 
   // ============================================
+  // CLINICAL HISTORY
+  // ============================================
+
+  getClinicalHistory(patientId: string): Observable<ClinicalHistory> {
+    return of(this.getMockClinicalHistory(patientId));
+  }
+
+  saveClinicalSection(patientId: string, sectionKey: string, data: unknown): Observable<ClinicalHistory> {
+    return of(this.getMockClinicalHistory(patientId));
+  }
+
+  // ============================================
   // SPECIALISTS (for invitations)
   // ============================================
 
@@ -298,7 +311,22 @@ export class NutritionistPortalApiService {
         currentWeight: 72.5,
         targetWeight: 68,
         progressPercentage: 50,
-        hasUnreadMessages: true
+        hasUnreadMessages: true,
+        clinicalHistoryCompleteness: 58,
+        clinicalHistorySections: [
+          { sectionKey: 'personal_info', label: 'Datos Personales', filled: true },
+          { sectionKey: 'medical_info', label: 'Info Médica', filled: true },
+          { sectionKey: 'family_history', label: 'Ant. Familiares', filled: true },
+          { sectionKey: 'pathological_history', label: 'Ant. Patológicos', filled: false },
+          { sectionKey: 'current_conditions', label: 'Padecimientos', filled: true },
+          { sectionKey: 'gynecological_history', label: 'Gineco-Obst.', filled: true },
+          { sectionKey: 'physical_activity', label: 'Act. Física', filled: true },
+          { sectionKey: 'habits_customs', label: 'Hábitos', filled: true },
+          { sectionKey: 'dietary_recall', label: 'Recordatorio 24h', filled: false },
+          { sectionKey: 'habitual_diet', label: 'Dieta Habitual', filled: false },
+          { sectionKey: 'physical_examination', label: 'Expl. Física', filled: false },
+          { sectionKey: 'biochemical_data', label: 'Datos Bioquím.', filled: false }
+        ]
       },
       {
         id: '2',
@@ -412,6 +440,7 @@ export class NutritionistPortalApiService {
       },
       documents: [],
       clinicalNotes: this.getMockClinicalNotes(),
+      clinicalHistory: this.getMockClinicalHistory(summary.id),
       status: summary.status,
       createdAt: this.daysAgo(180),
       assignedNutritionistId: '1'
@@ -669,6 +698,92 @@ export class NutritionistPortalApiService {
         specialty: 'Nutrición Pediátrica'
       }
     ];
+  }
+
+  private getMockClinicalHistory(patientId: string): ClinicalHistory {
+    return {
+      patientId,
+      familyHistory: {
+        id: 'fh-1',
+        patientId,
+        records: [
+          { id: 'fhr-1', condition: 'diabetes_type_2', relationship: 'father', isAlive: true, notes: 'Diagnosticado a los 55 años' },
+          { id: 'fhr-2', condition: 'hypertension', relationship: 'mother', isAlive: true },
+          { id: 'fhr-3', condition: 'obesity', relationship: 'maternal_grandmother', isAlive: false }
+        ],
+        additionalNotes: 'Historial familiar de enfermedades metabólicas.',
+        createdAt: this.daysAgo(90),
+        updatedAt: this.daysAgo(30),
+        registeredBy: 'Dra. Ana López'
+      },
+      currentConditions: {
+        id: 'cc-1',
+        patientId,
+        conditions: [
+          { id: 'cc-r1', diagnosis: 'Hipotiroidismo', diagnosisDate: new Date('2020-03-15'), currentTreatment: 'Levotiroxina 50mcg', treatingPhysician: 'Dr. Martínez', controlledStatus: 'controlled' }
+        ],
+        createdAt: this.daysAgo(90),
+        updatedAt: this.daysAgo(14),
+        registeredBy: 'Dra. Ana López'
+      },
+      gynecologicalHistory: {
+        id: 'gyn-1',
+        patientId,
+        menarcheAge: 12,
+        cycleRegular: true,
+        cycleDurationDays: 28,
+        menstruationDurationDays: 5,
+        lastMenstrualPeriodDate: this.daysAgo(14),
+        dysmenorrhea: false,
+        pregnancies: 1,
+        deliveries: 1,
+        abortions: 0,
+        cesareans: 0,
+        currentlyPregnant: false,
+        menopause: false,
+        hormoneReplacementTherapy: false,
+        contraceptiveMethod: 'iud',
+        hasPCOS: false,
+        createdAt: this.daysAgo(90),
+        updatedAt: this.daysAgo(30),
+        registeredBy: 'Dra. Ana López'
+      },
+      physicalActivity: {
+        id: 'pa-1',
+        patientId,
+        generalLevel: 'moderate',
+        activities: [
+          { id: 'pa-a1', activityType: 'Caminata', frequencyPerWeek: 4, durationMinutes: 30, intensity: 'moderate', yearsOfPractice: 2 },
+          { id: 'pa-a2', activityType: 'Yoga', frequencyPerWeek: 2, durationMinutes: 60, intensity: 'light', yearsOfPractice: 1 }
+        ],
+        additionalNotes: 'Paciente motivada a incrementar actividad.',
+        createdAt: this.daysAgo(60),
+        updatedAt: this.daysAgo(14),
+        registeredBy: 'Dra. Ana López'
+      },
+      habitsAndCustoms: {
+        id: 'hc-1',
+        patientId,
+        smokingStatus: 'never',
+        alcoholConsumption: 'occasional',
+        alcoholFrequencyPerWeek: 1,
+        alcoholType: 'Vino tinto',
+        dailyWaterIntakeLiters: 1.5,
+        sleepHoursPerNight: 7,
+        sleepQuality: 'good',
+        stressLevel: 'moderate',
+        usesSupplements: true,
+        supplements: ['Vitamina D', 'Omega 3'],
+        dailyCaffeineServings: 2,
+        createdAt: this.daysAgo(60),
+        updatedAt: this.daysAgo(14),
+        registeredBy: 'Dra. Ana López'
+      },
+      dietaryRecalls: [],
+      physicalExaminations: [],
+      biochemicalData: [],
+      lastUpdated: this.daysAgo(14)
+    };
   }
 
   // Helper methods for dates

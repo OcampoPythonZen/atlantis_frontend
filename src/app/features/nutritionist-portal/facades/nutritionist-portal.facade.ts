@@ -443,6 +443,43 @@ export class NutritionistPortalFacade {
   }
 
   // ============================================
+  // CLINICAL HISTORY OPERATIONS
+  // ============================================
+
+  async loadClinicalHistory(patientId: string): Promise<void> {
+    try {
+      const clinicalHistory = await firstValueFrom(
+        this.api.getClinicalHistory(patientId)
+      );
+      // Update selected patient with clinical history
+      const patient = this.store.selectedPatient();
+      if (patient && patient.id === patientId) {
+        this.store.setSelectedPatient({ ...patient, clinicalHistory });
+      }
+      this.appRef.tick();
+    } catch (error) {
+      this.handleError(error, 'Error al cargar historial clínico');
+    }
+  }
+
+  async saveClinicalSection(patientId: string, sectionKey: string, data: unknown): Promise<boolean> {
+    try {
+      const updatedHistory = await firstValueFrom(
+        this.api.saveClinicalSection(patientId, sectionKey, data)
+      );
+      const patient = this.store.selectedPatient();
+      if (patient && patient.id === patientId) {
+        this.store.setSelectedPatient({ ...patient, clinicalHistory: updatedHistory });
+      }
+      this.appRef.tick();
+      return true;
+    } catch (error) {
+      this.handleError(error, 'Error al guardar sección clínica');
+      return false;
+    }
+  }
+
+  // ============================================
   // SPECIALIST SEARCH
   // ============================================
 

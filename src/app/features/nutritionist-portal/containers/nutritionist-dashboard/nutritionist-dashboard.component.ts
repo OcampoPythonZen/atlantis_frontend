@@ -311,6 +311,25 @@ import { PatientSummary, PatientFilterStatus } from '../../models/nutritionist.m
                 </div>
               }
 
+              <!-- Clinical record completeness -->
+              @if (patient.clinicalHistorySections && patient.clinicalHistorySections.length > 0) {
+                <div class="mb-4">
+                  <div class="flex items-center justify-between text-xs mb-1">
+                    <span class="text-dark-500" [id]="'clinical-label-' + patient.id">Expediente clínico</span>
+                    <span class="text-dark-500">{{ getFilledSections(patient) }}/{{ patient.clinicalHistorySections.length }}</span>
+                  </div>
+                  <div class="flex gap-0.5 h-1.5" [attr.aria-label]="'Completitud del expediente clínico de ' + patient.fullName">
+                    @for (section of patient.clinicalHistorySections; track section.sectionKey) {
+                      <div
+                        class="flex-1 rounded-full"
+                        [class]="section.filled ? 'bg-teal-400' : 'bg-dark-200 dark:bg-dark-700'"
+                        [title]="section.label + (section.filled ? ' ✓' : '')"
+                      ></div>
+                    }
+                  </div>
+                </div>
+              }
+
               <!-- Quick actions -->
               <div class="flex items-center justify-between pt-3 border-t border-dark-200 dark:border-dark-700">
                 <div class="flex items-center gap-1" role="group" [attr.aria-label]="'Acciones rápidas para ' + patient.fullName">
@@ -424,6 +443,10 @@ export class NutritionistDashboardComponent implements OnInit {
       return `${parts[0]![0]}${parts[1]![0]}`.toUpperCase();
     }
     return name.substring(0, 2).toUpperCase();
+  }
+
+  getFilledSections(patient: PatientSummary): number {
+    return patient.clinicalHistorySections?.filter(s => s.filled).length ?? 0;
   }
 
   formatDate(date: Date): string {

@@ -37,6 +37,8 @@ import type {
   AppointmentStatus
 } from '../../patient-portal/models/patient.model';
 
+import type { ClinicalHistory, ClinicalSectionStatus } from './clinical-history.model';
+
 // Extended Appointment for nutritionist view (includes patient info)
 export interface Appointment extends BaseAppointment {
   readonly patientName: string;
@@ -78,6 +80,8 @@ export interface PatientSummary {
   readonly targetWeight?: number;
   readonly progressPercentage?: number;
   readonly hasUnreadMessages: boolean;
+  readonly clinicalHistoryCompleteness?: number;
+  readonly clinicalHistorySections?: ClinicalSectionStatus[];
 }
 
 // ============================================
@@ -95,6 +99,7 @@ export interface PatientComplete {
   readonly activePlan?: import('../../patient-portal/models/patient.model').NutritionPlan;
   readonly documents: import('../../patient-portal/models/patient.model').DocumentFile[];
   readonly clinicalNotes: ClinicalNote[];
+  readonly clinicalHistory?: ClinicalHistory;
   readonly status: PatientStatus;
   readonly createdAt: Date;
   readonly assignedNutritionistId: string;

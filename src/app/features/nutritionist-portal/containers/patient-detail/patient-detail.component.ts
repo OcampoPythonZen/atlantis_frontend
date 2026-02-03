@@ -8,6 +8,7 @@ import { PatientPlanTabComponent } from '../../components/patient-detail-tabs/pa
 import { PatientAppointmentsTabComponent } from '../../components/patient-detail-tabs/patient-appointments-tab.component';
 import { PatientMessagesTabComponent } from '../../components/patient-detail-tabs/patient-messages-tab.component';
 import { PatientDocumentsTabComponent } from '../../components/patient-detail-tabs/patient-documents-tab.component';
+import { ClinicalRecordTabComponent } from '../../components/patient-detail-tabs/clinical-record-tab/clinical-record-tab.component';
 
 @Component({
   selector: 'app-patient-detail',
@@ -20,7 +21,8 @@ import { PatientDocumentsTabComponent } from '../../components/patient-detail-ta
     PatientPlanTabComponent,
     PatientAppointmentsTabComponent,
     PatientMessagesTabComponent,
-    PatientDocumentsTabComponent
+    PatientDocumentsTabComponent,
+    ClinicalRecordTabComponent
   ],
   template: `
     <div class="space-y-6">
@@ -136,9 +138,9 @@ import { PatientDocumentsTabComponent } from '../../components/patient-detail-ta
               <span class="flex items-center gap-3">
                 <span class="w-8 h-8 rounded-lg bg-teal-100 dark:bg-teal-900/30 flex items-center justify-center">
                   @switch (activeTab) {
-                    @case ('info') {
+                    @case ('expediente') {
                       <svg class="w-4 h-4 text-teal-600 dark:text-teal-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01" />
                       </svg>
                     }
                     @case ('progress') {
@@ -247,113 +249,8 @@ import { PatientDocumentsTabComponent } from '../../components/patient-detail-ta
 
           <div class="p-4 lg:p-6">
             @switch (activeTab) {
-              @case ('info') {
-                <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                  <!-- Personal Info -->
-                  <div class="bg-dark-50 dark:bg-dark-900 rounded-xl p-5">
-                    <h3 class="text-lg font-semibold text-dark-900 dark:text-dark-50 mb-4 flex items-center gap-2">
-                      <svg class="w-5 h-5 text-navy-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-                      </svg>
-                      Información Personal
-                    </h3>
-                    <dl class="space-y-4">
-                      <div class="flex justify-between">
-                        <dt class="text-sm text-dark-500 dark:text-dark-400">Género</dt>
-                        <dd class="text-sm font-medium text-dark-900 dark:text-dark-50">
-                          {{ patient.personalInfo.gender === 'male' ? 'Masculino' : patient.personalInfo.gender === 'female' ? 'Femenino' : 'Otro' }}
-                        </dd>
-                      </div>
-                      <div class="flex justify-between">
-                        <dt class="text-sm text-dark-500 dark:text-dark-400">Fecha de Nacimiento</dt>
-                        <dd class="text-sm font-medium text-dark-900 dark:text-dark-50">
-                          {{ patient.personalInfo.birthDate | date:'longDate' }}
-                        </dd>
-                      </div>
-                      @if (patient.personalInfo.address) {
-                        <div>
-                          <dt class="text-sm text-dark-500 dark:text-dark-400 mb-1">Dirección</dt>
-                          <dd class="text-sm font-medium text-dark-900 dark:text-dark-50">{{ patient.personalInfo.address }}</dd>
-                        </div>
-                      }
-                      @if (patient.personalInfo.emergencyContact) {
-                        <div class="pt-3 border-t border-dark-200 dark:border-dark-700">
-                          <dt class="text-sm text-dark-500 dark:text-dark-400 mb-2">Contacto de Emergencia</dt>
-                          <dd class="text-sm text-dark-900 dark:text-dark-50">
-                            <p class="font-medium">{{ patient.personalInfo.emergencyContact.name }}</p>
-                            <p class="text-dark-500">{{ patient.personalInfo.emergencyContact.phone }} - {{ patient.personalInfo.emergencyContact.relationship }}</p>
-                          </dd>
-                        </div>
-                      }
-                    </dl>
-                  </div>
-
-                  <!-- Medical Info -->
-                  <div class="bg-dark-50 dark:bg-dark-900 rounded-xl p-5">
-                    <h3 class="text-lg font-semibold text-dark-900 dark:text-dark-50 mb-4 flex items-center gap-2">
-                      <svg class="w-5 h-5 text-navy-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                      </svg>
-                      Información Médica
-                    </h3>
-                    <dl class="space-y-4">
-                      @if (patient.medicalInfo.bloodType) {
-                        <div class="flex justify-between">
-                          <dt class="text-sm text-dark-500 dark:text-dark-400">Tipo de Sangre</dt>
-                          <dd class="text-sm font-medium text-dark-900 dark:text-dark-50">{{ patient.medicalInfo.bloodType }}</dd>
-                        </div>
-                      }
-                      @if (patient.medicalInfo.allergies.length > 0) {
-                        <div>
-                          <dt class="text-sm text-dark-500 dark:text-dark-400 mb-2">Alergias</dt>
-                          <dd class="flex flex-wrap gap-2">
-                            @for (allergy of patient.medicalInfo.allergies; track allergy) {
-                              <span class="px-2 py-1 text-xs bg-red-100 dark:bg-red-900/30 text-red-700 dark:text-red-400 rounded-lg">
-                                {{ allergy }}
-                              </span>
-                            }
-                          </dd>
-                        </div>
-                      }
-                      @if (patient.medicalInfo.conditions.length > 0) {
-                        <div>
-                          <dt class="text-sm text-dark-500 dark:text-dark-400 mb-2">Condiciones</dt>
-                          <dd class="flex flex-wrap gap-2">
-                            @for (condition of patient.medicalInfo.conditions; track condition) {
-                              <span class="px-2 py-1 text-xs bg-amber-100 dark:bg-amber-900/30 text-amber-700 dark:text-amber-400 rounded-lg">
-                                {{ condition }}
-                              </span>
-                            }
-                          </dd>
-                        </div>
-                      }
-                      @if (patient.medicalInfo.medications.length > 0) {
-                        <div>
-                          <dt class="text-sm text-dark-500 dark:text-dark-400 mb-2">Medicamentos</dt>
-                          <dd class="flex flex-wrap gap-2">
-                            @for (med of patient.medicalInfo.medications; track med) {
-                              <span class="px-2 py-1 text-xs bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400 rounded-lg">
-                                {{ med }}
-                              </span>
-                            }
-                          </dd>
-                        </div>
-                      }
-                      @if (patient.medicalInfo.dietaryRestrictions && patient.medicalInfo.dietaryRestrictions.length > 0) {
-                        <div>
-                          <dt class="text-sm text-dark-500 dark:text-dark-400 mb-2">Restricciones Alimentarias</dt>
-                          <dd class="flex flex-wrap gap-2">
-                            @for (restriction of patient.medicalInfo.dietaryRestrictions; track restriction) {
-                              <span class="px-2 py-1 text-xs bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-400 rounded-lg">
-                                {{ restriction }}
-                              </span>
-                            }
-                          </dd>
-                        </div>
-                      }
-                    </dl>
-                  </div>
-                </div>
+              @case ('expediente') {
+                <app-clinical-record-tab [patient]="patient" />
               }
               @case ('progress') {
                 <app-patient-progress-tab [patient]="patient" />
@@ -487,7 +384,7 @@ export class PatientDetailComponent implements OnInit {
   private readonly route = inject(ActivatedRoute);
   private readonly elementRef = inject(ElementRef);
 
-  activeTab = 'info';
+  activeTab = 'expediente';
   newNoteContent = '';
   isNotePrivate = false;
 
@@ -495,7 +392,7 @@ export class PatientDetailComponent implements OnInit {
   isTabMenuOpen = signal(false);
 
   readonly tabs = [
-    { id: 'info', label: 'Información' },
+    { id: 'expediente', label: 'Expediente' },
     { id: 'progress', label: 'Progreso' },
     { id: 'plan', label: 'Plan Nutricional' },
     { id: 'appointments', label: 'Citas' },
@@ -507,7 +404,7 @@ export class PatientDetailComponent implements OnInit {
   // Computed label for active tab
   activeTabLabel = computed(() => {
     const tab = this.tabs.find(t => t.id === this.activeTab);
-    return tab?.label || 'Información';
+    return tab?.label || 'Expediente';
   });
 
   // Close dropdown when clicking outside

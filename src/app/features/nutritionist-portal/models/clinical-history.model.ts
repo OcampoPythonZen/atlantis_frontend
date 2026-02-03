@@ -474,3 +474,36 @@ export interface ClinicalHistory {
   readonly biochemicalData: BiochemicalData[];           // multiple over time
   readonly lastUpdated: Date;
 }
+
+// ============================================
+// CLINICAL HISTORY COMPLETENESS
+// ============================================
+
+export type ClinicalSectionKey =
+  | 'personal_info'
+  | 'medical_info'
+  | 'family_history'
+  | 'pathological_history'
+  | 'current_conditions'
+  | 'perinatal_history'
+  | 'gynecological_history'
+  | 'physical_activity'
+  | 'habits_customs'
+  | 'dietary_recall'
+  | 'habitual_diet'
+  | 'physical_examination'
+  | 'biochemical_data';
+
+export interface ClinicalSectionStatus {
+  readonly sectionKey: ClinicalSectionKey;
+  readonly label: string;
+  readonly filled: boolean;
+}
+
+export interface ClinicalHistoryCompleteness {
+  readonly patientId: string;
+  readonly sections: ClinicalSectionStatus[];
+  readonly completedCount: number;
+  readonly totalCount: number;
+  readonly percentage: number;
+}
