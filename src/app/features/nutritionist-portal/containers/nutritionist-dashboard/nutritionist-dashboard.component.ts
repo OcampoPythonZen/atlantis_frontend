@@ -335,7 +335,8 @@ import { PatientSummary, PatientFilterStatus } from '../../models/nutritionist.m
                 <div class="flex items-center gap-1" role="group" [attr.aria-label]="'Acciones rápidas para ' + patient.fullName">
                   <button
                     [routerLink]="['/nutritionist/patient', patient.id]"
-                    class="p-2 rounded-lg text-dark-500 hover:text-navy-600 hover:bg-navy-50 dark:hover:bg-navy-900/20 transition-colors"
+                    title="Ver perfil"
+                    class="p-2 rounded-lg text-navy-500 dark:text-navy-400 hover:text-navy-600 hover:bg-navy-50 dark:hover:bg-navy-900/20 transition-colors"
                     [attr.aria-label]="'Ver perfil de ' + patient.fullName"
                   >
                     <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
@@ -345,7 +346,8 @@ import { PatientSummary, PatientFilterStatus } from '../../models/nutritionist.m
                   <button
                     [routerLink]="['/nutritionist/patient', patient.id]"
                     [queryParams]="{ tab: 'progress' }"
-                    class="p-2 rounded-lg text-dark-500 hover:text-green-600 hover:bg-green-50 dark:hover:bg-green-900/20 transition-colors"
+                    title="Ver progreso"
+                    class="p-2 rounded-lg text-green-500 dark:text-green-400 hover:text-green-600 hover:bg-green-50 dark:hover:bg-green-900/20 transition-colors"
                     [attr.aria-label]="'Ver progreso de ' + patient.fullName"
                   >
                     <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
@@ -355,7 +357,8 @@ import { PatientSummary, PatientFilterStatus } from '../../models/nutritionist.m
                   <button
                     [routerLink]="['/nutritionist/patient', patient.id]"
                     [queryParams]="{ tab: 'plan' }"
-                    class="p-2 rounded-lg text-dark-500 hover:text-amber-600 hover:bg-amber-50 dark:hover:bg-amber-900/20 transition-colors"
+                    title="Ver plan nutricional"
+                    class="p-2 rounded-lg text-amber-500 dark:text-amber-400 hover:text-amber-600 hover:bg-amber-50 dark:hover:bg-amber-900/20 transition-colors"
                     [attr.aria-label]="'Ver plan de ' + patient.fullName"
                   >
                     <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
@@ -365,7 +368,8 @@ import { PatientSummary, PatientFilterStatus } from '../../models/nutritionist.m
                   <button
                     [routerLink]="['/nutritionist/patient', patient.id]"
                     [queryParams]="{ tab: 'appointments' }"
-                    class="p-2 rounded-lg text-dark-500 hover:text-blue-600 hover:bg-blue-50 dark:hover:bg-blue-900/20 transition-colors"
+                    title="Ver citas"
+                    class="p-2 rounded-lg text-blue-500 dark:text-blue-400 hover:text-blue-600 hover:bg-blue-50 dark:hover:bg-blue-900/20 transition-colors"
                     [attr.aria-label]="'Ver citas de ' + patient.fullName"
                   >
                     <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
@@ -373,12 +377,10 @@ import { PatientSummary, PatientFilterStatus } from '../../models/nutritionist.m
                     </svg>
                   </button>
                   <button
-                    class="p-2 rounded-lg transition-colors relative"
-                    [class.text-purple-600]="patient.hasUnreadMessages"
-                    [class.text-dark-500]="!patient.hasUnreadMessages"
-                    [class.hover:text-purple-600]="true"
-                    [class.hover:bg-purple-50]="true"
-                    [class.dark:hover:bg-purple-900/20]="true"
+                    [routerLink]="['/nutritionist/patient', patient.id]"
+                    [queryParams]="{ tab: 'messages' }"
+                    title="Ver mensajes"
+                    class="p-2 rounded-lg transition-colors relative text-purple-500 dark:text-purple-400 hover:text-purple-600 hover:bg-purple-50 dark:hover:bg-purple-900/20"
                     [attr.aria-label]="'Mensajes de ' + patient.fullName + (patient.hasUnreadMessages ? ' (mensajes sin leer)' : '')"
                   >
                     <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
@@ -392,7 +394,8 @@ import { PatientSummary, PatientFilterStatus } from '../../models/nutritionist.m
 
                 <button
                   [routerLink]="['/nutritionist/patient', patient.id, 'edit']"
-                  class="p-2 rounded-lg text-dark-500 hover:text-dark-700 dark:hover:text-dark-300 hover:bg-dark-100 dark:hover:bg-dark-700 transition-colors"
+                  title="Editar paciente"
+                  class="p-2 rounded-lg text-dark-500 dark:text-dark-400 hover:text-dark-700 dark:hover:text-dark-300 hover:bg-dark-100 dark:hover:bg-dark-700 transition-colors"
                   [attr.aria-label]="'Editar información de ' + patient.fullName"
                 >
                   <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">

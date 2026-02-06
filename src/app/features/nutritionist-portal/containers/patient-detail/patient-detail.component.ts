@@ -425,8 +425,15 @@ export class PatientDetailComponent implements OnInit {
 
   ngOnInit(): void {
     const patientId = this.route.snapshot.paramMap.get('id');
+    const tab = this.route.snapshot.queryParamMap.get('tab');
+
     if (patientId) {
       this.facade.loadPatientDetail(patientId);
+    }
+
+    // Set active tab from query params if valid
+    if (tab && this.tabs.some(t => t.id === tab)) {
+      this.activeTab = tab;
     }
   }
 
